@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لوحة الشركات – CV 2030</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <style>
+    .candidate-card{background:#fff;border-radius:16px;padding:20px;border:1.5px solid #eef1ff;margin-bottom:12px;display:flex;align-items:center;gap:16px;transition:.25s;cursor:pointer}
+    .candidate-card:hover{border-color:#4F6EF7;box-shadow:0 4px 24px rgba(79,110,247,.1)}
+    .cand-av{width:48px;height:48px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;font-weight:700}
+    .cand-info{flex:1}
+    .cand-name{font-weight:800;font-size:.95rem;margin-bottom:3px}
+    .cand-role{font-size:.8rem;color:#6B6E85}
+    .cand-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+    .cand-skill{background:#f0f3ff;color:#4F6EF7;padding:2px 9px;border-radius:50px;font-size:.72rem;font-weight:700}
+    .cand-match{font-size:1.1rem;font-weight:900;color:#10B981;min-width:50px;text-align:center}
+    .filter-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;padding:20px;background:#fff;border-radius:14px;border:1px solid #eef1ff}
+    .filter-bar select,.filter-bar input{padding:10px 14px;border:1.5px solid #e2e5f0;border-radius:10px;font-family:Cairo,sans-serif;font-size:.88rem;color:#3A3D52;background:#f5f6fa;flex:1;min-width:140px}
+    .job-post-card{background:linear-gradient(135deg,#4F6EF7,#7c3aed);border-radius:16px;padding:24px;color:#fff;margin-bottom:20px}
+    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:28px}
+    .stat-box{background:#fff;border-radius:14px;padding:20px;border:1px solid #eef1ff;text-align:center}
+    .stat-box-num{font-size:2rem;font-weight:900;font-family:'Space Grotesk',sans-serif;color:#4F6EF7}
+    .stat-box-label{font-size:.78rem;color:#6B6E85;font-weight:600}
+    .interview-item{display:flex;align-items:center;gap:14px;padding:14px;background:#f5f6fa;border-radius:12px;margin-bottom:10px}
+    .int-time{font-size:.75rem;font-weight:700;color:#4F6EF7;min-width:60px;text-align:center;background:#f0f3ff;padding:6px;border-radius:8px}
+    .int-info{flex:1}
+    .int-name{font-weight:700;font-size:.9rem}
+    .int-role{font-size:.78rem;color:#6B6E85}
+  </style>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><span class="logo-mark">CV</span><span style="color:#fff">2030</span></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">لوحة التحكم</div>
+      <a href="/recruiter" class="sidebar-link active"><span class="icon">🏠</span> نظرة عامة</a>
+      <a href="#" class="sidebar-link"><span class="icon">🔍</span> البحث عن مرشحين</a>
+      <a href="#" class="sidebar-link"><span class="icon">📋</span> الوظائف المنشورة</a>
+      <a href="#" class="sidebar-link"><span class="icon">📅</span> المقابلات</a>
+      <div class="sidebar-section">الأدوات</div>
+      <a href="#" class="sidebar-link"><span class="icon">📊</span> تقارير التوظيف</a>
+      <a href="#" class="sidebar-link"><span class="icon">📣</span> الإعلانات</a>
+      <a href="#" class="sidebar-link"><span class="icon">⚙️</span> إعدادات الشركة</a>
+      <a href="/" class="sidebar-link"><span class="icon">🚪</span> تسجيل الخروج</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="sidebar-user-info">
+        <div class="sidebar-avatar" style="background:linear-gradient(135deg,#7c3aed,#4F6EF7)"></div>
+        <div>
+          <div class="sidebar-user-name">شركة الإنتاج المتقدم</div>
+          <div class="sidebar-user-role">حساب شركة · Pro</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="topbar-title">لوحة التوظيف 🏢</div>
+      <div class="topbar-actions">
+        <div class="notif-btn">🔔<span class="notif-badge">5</span></div>
+        <button class="btn-primary" style="padding:9px 18px;font-size:.85rem" onclick="document.getElementById('postJobModal').style.display='flex'">+ نشر وظيفة</button>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-box-num">142</div><div class="stat-box-label">مرشحون متاحون</div></div>
+        <div class="stat-box"><div class="stat-box-num">8</div><div class="stat-box-label">وظائف نشطة</div></div>
+        <div class="stat-box"><div class="stat-box-num">23</div><div class="stat-box-label">مقابلات هذا الشهر</div></div>
+        <div class="stat-box"><div class="stat-box-num" style="color:#10B981">91%</div><div class="stat-box-label">معدل التوافق</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:24px" class="rec-grid">
+        <div>
+          <!-- SEARCH -->
+          <div class="job-post-card">
+            <div style="font-size:1rem;font-weight:800;margin-bottom:12px">🔍 ابحث عن المرشح المثالي</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <input type="text" placeholder="الوظيفة المطلوبة (مثال: مشرف إنتاج)" style="flex:1;padding:12px 16px;border-radius:10px;border:none;font-family:Cairo,sans-serif;font-size:.9rem;min-width:200px"/>
+              <button class="btn-primary" style="background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6)" onclick="searchCandidates()">بحث</button>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <select><option>كل المجالات</option><option>الإنتاج والتصنيع</option><option>خدمة العملاء</option><option>المبيعات</option><option>تقنية المعلومات</option></select>
+            <select><option>كل الخبرات</option><option>أقل من 3 سنوات</option><option>3-7 سنوات</option><option>أكثر من 7 سنوات</option></select>
+            <select><option>نسبة التوافق</option><option>أعلى من 90%</option><option>أعلى من 80%</option><option>أعلى من 70%</option></select>
+            <select><option>الموقع</option><option>القاهرة</option><option>الإسكندرية</option><option>دبي</option><option>الرياض</option></select>
+          </div>
+
+          <!-- CANDIDATES -->
+          <div class="panel">
+            <div class="panel-title">المرشحون المقترحون <span style="font-size:.8rem;color:#6B6E85;font-weight:400">(142 نتيجة)</span></div>
+            <div id="candidatesList">
+              <div class="candidate-card">
+                <div class="cand-av" style="background:linear-gradient(135deg,#4F6EF7,#00D4A4)">س</div>
+                <div class="cand-info">
+                  <div class="cand-name">سارة أحمد محمود</div>
+                  <div class="cand-role">Team Leader خدمة عملاء · 6 سنوات خبرة · القاهرة</div>
+                  <div class="cand-skills"><span class="cand-skill">إدارة الفرق</span><span class="cand-skill">CRM</span><span class="cand-skill">تدريب الموظفين</span></div>
+                </div>
+                <div class="cand-match">94%</div>
+                <button class="btn-sm" onclick="bookInterview('سارة أحمد')">حجز مقابلة</button>
+              </div>
+              <div class="candidate-card">
+                <div class="cand-av" style="background:linear-gradient(135deg,#7c3aed,#4F6EF7)">م</div>
+                <div class="cand-info">
+                  <div class="cand-name">محمد علي إبراهيم</div>
+                  <div class="cand-role">مشرف إنتاج · 9 سنوات خبرة · الإسكندرية</div>
+                  <div class="cand-skills"><span class="cand-skill">ISO 9001</span><span class="cand-skill">Lean Manufacturing</span><span class="cand-skill">Excel</span></div>
+                </div>
+                <div class="cand-match">91%</div>
+                <button class="btn-sm" onclick="bookInterview('محمد علي')">حجز مقابلة</button>
+              </div>
+              <div class="candidate-card">
+                <div class="cand-av" style="background:linear-gradient(135deg,#F59E0B,#EF4444)">ن</div>
+                <div class="cand-info">
+                  <div class="cand-name">نور محمد حسن</div>
+                  <div class="cand-role">مدير مستودع · 5 سنوات خبرة · القاهرة</div>
+                  <div class="cand-skills"><span class="cand-skill">SAP</span><span class="cand-skill">إدارة المخزون</span><span class="cand-skill">Excel</span></div>
+                </div>
+                <div class="cand-match">87%</div>
+                <button class="btn-sm" onclick="bookInterview('نور محمد')">حجز مقابلة</button>
+              </div>
+              <div class="candidate-card">
+                <div class="cand-av" style="background:linear-gradient(135deg,#10B981,#4F6EF7)">ع</div>
+                <div class="cand-info">
+                  <div class="cand-name">عمر أحمد يوسف</div>
+                  <div class="cand-role">مهندس صيانة · 7 سنوات خبرة · دبي</div>
+                  <div class="cand-skills"><span class="cand-skill">PLC</span><span class="cand-skill">صيانة صناعية</span><span class="cand-skill">AutoCAD</span></div>
+                </div>
+                <div class="cand-match">85%</div>
+                <button class="btn-sm" onclick="bookInterview('عمر أحمد')">حجز مقابلة</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div>
+          <div class="panel">
+            <div class="panel-title">المقابلات القادمة 📅</div>
+            <div class="interview-item">
+              <div class="int-time">اليوم<br/>10:00</div>
+              <div class="int-info"><div class="int-name">سارة أحمد</div><div class="int-role">Team Leader · أونلاين</div></div>
+              <span class="badge badge-success">مؤكد</span>
+            </div>
+            <div class="interview-item">
+              <div class="int-time">غداً<br/>14:00</div>
+              <div class="int-info"><div class="int-name">محمد علي</div><div class="int-role">مشرف إنتاج · مكتب</div></div>
+              <span class="badge badge-warn">معلق</span>
+            </div>
+            <div class="interview-item">
+              <div class="int-time">الخميس<br/>11:00</div>
+              <div class="int-info"><div class="int-name">نور محمد</div><div class="int-role">مدير مستودع · أونلاين</div></div>
+              <span class="badge badge-info">مجدول</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">أكثر المهارات طلباً</div>
+            <div class="progress-item"><div class="progress-label"><span>إدارة الفرق</span><span>78%</span></div><div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>Microsoft Excel</span><span>65%</span></div><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>SAP / ERP</span><span>52%</span></div><div class="progress-bar"><div class="progress-fill" style="width:52%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>ISO 9001</span><span>44%</span></div><div class="progress-bar"><div class="progress-fill" style="width:44%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- POST JOB MODAL -->
+<div id="postJobModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:24px">
+  <div style="background:#fff;border-radius:20px;padding:36px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto">
+    <h2 style="margin-bottom:20px">نشر وظيفة جديدة</h2>
+    <div class="form-group"><label class="form-label">المسمى الوظيفي</label><input type="text" class="form-input" placeholder="مثال: مشرف إنتاج"/></div>
+    <div class="form-group"><label class="form-label">المجال</label><select class="form-input"><option>اختر المجال...</option><option>الإنتاج</option><option>خدمة العملاء</option><option>المبيعات</option></select></div>
+    <div class="form-group"><label class="form-label">سنوات الخبرة المطلوبة</label><select class="form-input"><option>1-3 سنوات</option><option>3-7 سنوات</option><option>أكثر من 7</option></select></div>
+    <div class="form-group"><label class="form-label">المهارات المطلوبة</label><input type="text" class="form-input" placeholder="Excel, إدارة فرق, ISO..."/></div>
+    <div class="form-group"><label class="form-label">وصف الوظيفة</label><textarea class="form-input" rows="3" placeholder="أضف وصفاً مختصراً..."></textarea></div>
+    <div style="display:flex;gap:10px;margin-top:8px">
+      <button class="btn-primary form-full" onclick="document.getElementById('postJobModal').style.display='none';window.showToast('تم نشر الوظيفة بنجاح!')">نشر الوظيفة</button>
+      <button class="btn-ghost" style="padding:12px 20px" onclick="document.getElementById('postJobModal').style.display='none'">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/main.js"></script>
+<script>
+function bookInterview(name){
+  showToast('تم حجز مقابلة مع '+name+' بنجاح!', 'success');
+}
+function searchCandidates(){
+  showToast('جارٍ البحث...', 'success');
+}
+</script>
+<style>@media(max-width:900px){.rec-grid{grid-template-columns:1fr!important;}}</style>
+</body>
+</html>

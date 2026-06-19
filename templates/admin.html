@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لوحة الإدارة العليا – CV 2030</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <style>
+    .revenue-card{background:linear-gradient(135deg,#4F6EF7,#00D4A4);border-radius:20px;padding:28px;color:#fff;margin-bottom:24px}
+    .rev-amount{font-size:3rem;font-weight:900;font-family:'Space Grotesk',sans-serif;margin-bottom:4px}
+    .rev-label{font-size:.9rem;opacity:.8}
+    .rev-change{background:rgba(255,255,255,.2);display:inline-block;padding:4px 12px;border-radius:50px;font-size:.82rem;font-weight:700;margin-top:8px}
+    .chart-bar-wrap{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:16px}
+    .chart-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .chart-bar-fill{width:100%;border-radius:6px 6px 0 0;background:rgba(255,255,255,.4);min-height:4px;transition:height 1s ease}
+    .chart-bar-label{font-size:.7rem;opacity:.7}
+    .user-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f5f6fa}
+    .user-row:last-child{border-bottom:none}
+    .user-av-sm{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff;font-weight:700}
+    .action-btns{display:flex;gap:8px}
+    .action-btn{padding:5px 12px;border-radius:8px;font-size:.75rem;font-weight:700;border:none;cursor:pointer;font-family:Cairo,sans-serif}
+    .ab-edit{background:#f0f3ff;color:#4F6EF7}
+    .ab-del{background:#fef2f2;color:#EF4444}
+    .ab-ban{background:#fff8e7;color:#d97706}
+  </style>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><span class="logo-mark">CV</span><span style="color:#fff">2030</span></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">الإدارة العليا</div>
+      <a href="/admin" class="sidebar-link active"><span class="icon">📊</span> لوحة التحكم</a>
+      <a href="#" class="sidebar-link"><span class="icon">👥</span> إدارة المستخدمين</a>
+      <a href="#" class="sidebar-link"><span class="icon">🏢</span> إدارة الشركات</a>
+      <a href="#" class="sidebar-link"><span class="icon">💰</span> الإيرادات</a>
+      <a href="#" class="sidebar-link"><span class="icon">🎓</span> إدارة الكورسات</a>
+      <div class="sidebar-section">النظام</div>
+      <a href="#" class="sidebar-link"><span class="icon">📣</span> الإعلانات</a>
+      <a href="#" class="sidebar-link"><span class="icon">🔧</span> إعدادات الموقع</a>
+      <a href="#" class="sidebar-link"><span class="icon">🛡️</span> السجلات والأمان</a>
+      <a href="#" class="sidebar-link"><span class="icon">📨</span> الدعم والتذاكر</a>
+      <a href="/" class="sidebar-link"><span class="icon">🚪</span> خروج</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="sidebar-user-info">
+        <div class="sidebar-avatar" style="background:linear-gradient(135deg,#F59E0B,#EF4444)"></div>
+        <div>
+          <div class="sidebar-user-name">صاحب الموقع</div>
+          <div class="sidebar-user-role">Super Admin</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="topbar-title">لوحة الإدارة العليا 👑</div>
+      <div class="topbar-actions">
+        <div class="notif-btn">🔔<span class="notif-badge">12</span></div>
+        <span style="font-size:.82rem;color:#6B6E85;background:#f5f6fa;padding:7px 14px;border-radius:8px">الخميس، 18 يونيو 2026</span>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <!-- REVENUE -->
+      <div class="revenue-card">
+        <div class="rev-label">إجمالي الإيرادات – يونيو 2026</div>
+        <div class="rev-amount">$24,850</div>
+        <div class="rev-change">↑ +32% عن الشهر الماضي</div>
+        <div class="chart-bar-wrap" id="revenueChart"></div>
+      </div>
+
+      <!-- STATS -->
+      <div class="admin-stats" style="margin-bottom:28px">
+        <div class="admin-stat"><div class="admin-stat-num" data-target="15420">0</div><div class="admin-stat-label">إجمالي المستخدمين</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" data-target="847">0</div><div class="admin-stat-label">شركات مسجلة</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" data-target="3241">0</div><div class="admin-stat-label">تحليلات CV أُجريت</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" data-target="128">0</div><div class="admin-stat-label">مقابلات هذا الشهر</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" style="color:#10B981">98.2%</div><div class="admin-stat-label">وقت تشغيل الموقع</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" style="color:#F59E0B">14</div><div class="admin-stat-label">تذاكر دعم مفتوحة</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:24px" class="admin-grid">
+        <div>
+          <!-- USERS TABLE -->
+          <div class="panel">
+            <div class="panel-title">
+              آخر المسجلين
+              <div style="display:flex;gap:8px">
+                <input type="text" placeholder="بحث..." style="padding:7px 12px;border:1.5px solid #e2e5f0;border-radius:8px;font-family:Cairo,sans-serif;font-size:.82rem"/>
+                <select style="padding:7px 12px;border:1.5px solid #e2e5f0;border-radius:8px;font-family:Cairo,sans-serif;font-size:.82rem">
+                  <option>كل الأنواع</option><option>باحث عن عمل</option><option>شركة</option>
+                </select>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>المستخدم</th><th>النوع</th><th>تاريخ التسجيل</th><th>الحالة</th><th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4F6EF7,#00D4A4);flex-shrink:0"></div><div><div style="font-weight:700;font-size:.88rem">محمد أحمد</div><div style="font-size:.75rem;color:#6B6E85">mo@example.com</div></div></div></td>
+                  <td><span class="badge badge-info">باحث</span></td>
+                  <td style="font-size:.82rem;color:#6B6E85">18/06/2026</td>
+                  <td><span class="badge badge-success">نشط</span></td>
+                  <td><div class="action-btns"><button class="action-btn ab-edit">تعديل</button><button class="action-btn ab-ban">إيقاف</button></div></td>
+                </tr>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#4F6EF7);flex-shrink:0"></div><div><div style="font-weight:700;font-size:.88rem">شركة الإنتاج المتقدم</div><div style="font-size:.75rem;color:#6B6E85">hr@factory.com</div></div></div></td>
+                  <td><span class="badge badge-warn">شركة</span></td>
+                  <td style="font-size:.82rem;color:#6B6E85">17/06/2026</td>
+                  <td><span class="badge badge-success">نشط</span></td>
+                  <td><div class="action-btns"><button class="action-btn ab-edit">تعديل</button><button class="action-btn ab-del">حذف</button></div></td>
+                </tr>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#10B981,#4F6EF7);flex-shrink:0"></div><div><div style="font-weight:700;font-size:.88rem">سارة أحمد</div><div style="font-size:.75rem;color:#6B6E85">sara@gmail.com</div></div></div></td>
+                  <td><span class="badge badge-info">باحث</span></td>
+                  <td style="font-size:.82rem;color:#6B6E85">16/06/2026</td>
+                  <td><span class="badge badge-warn">معلق</span></td>
+                  <td><div class="action-btns"><button class="action-btn ab-edit">تعديل</button><button class="action-btn ab-ban">تفعيل</button></div></td>
+                </tr>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#EF4444);flex-shrink:0"></div><div><div style="font-weight:700;font-size:.88rem">أكاديمية الكورسات</div><div style="font-size:.75rem;color:#6B6E85">info@academy.com</div></div></div></td>
+                  <td><span class="badge" style="background:#f3e8ff;color:#7c3aed">مزود كورسات</span></td>
+                  <td style="font-size:.82rem;color:#6B6E85">15/06/2026</td>
+                  <td><span class="badge badge-success">نشط</span></td>
+                  <td><div class="action-btns"><button class="action-btn ab-edit">تعديل</button><button class="action-btn ab-del">حذف</button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div>
+          <div class="panel">
+            <div class="panel-title">أداء المنصة</div>
+            <div class="progress-item"><div class="progress-label"><span>تحليلات CV</span><span>+23%</span></div><div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>التسجيلات الجديدة</span><span>+18%</span></div><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>إيرادات الاشتراكات</span><span>+32%</span></div><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>مقابلات محجوزة</span><span>+41%</span></div><div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">الاشتراكات النشطة</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f5f6fa;border-radius:10px">
+                <div><div style="font-weight:700;font-size:.88rem">مجاني</div><div style="font-size:.75rem;color:#6B6E85">9,240 مستخدم</div></div>
+                <span style="font-weight:800;color:#6B6E85">$0</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f0f3ff;border-radius:10px;border:1.5px solid rgba(79,110,247,.2)">
+                <div><div style="font-weight:700;font-size:.88rem">Pro – شهري</div><div style="font-size:.75rem;color:#6B6E85">4,820 مستخدم</div></div>
+                <span style="font-weight:800;color:#4F6EF7">$19/م</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:#eefbf5;border-radius:10px;border:1.5px solid rgba(16,185,129,.2)">
+                <div><div style="font-weight:700;font-size:.88rem">شركات B2B</div><div style="font-size:.75rem;color:#6B6E85">847 شركة</div></div>
+                <span style="font-weight:800;color:#10B981">$99/م</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">تذاكر الدعم 🎫</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="padding:10px 12px;background:#fef2f2;border-radius:10px;border-right:3px solid #EF4444;font-size:.85rem">
+                <div style="font-weight:700">مشكلة في رفع CV</div>
+                <div style="color:#6B6E85;font-size:.75rem">محمد أحمد · منذ ساعة</div>
+              </div>
+              <div style="padding:10px 12px;background:#fff8e7;border-radius:10px;border-right:3px solid #F59E0B;font-size:.85rem">
+                <div style="font-weight:700">استفسار عن الاشتراك</div>
+                <div style="color:#6B6E85;font-size:.75rem">سارة محمود · منذ 3 ساعات</div>
+              </div>
+              <div style="padding:10px 12px;background:#f0f3ff;border-radius:10px;border-right:3px solid #4F6EF7;font-size:.85rem">
+                <div style="font-weight:700">طلب فاتورة شركة</div>
+                <div style="color:#6B6E85;font-size:.75rem">شركة الإنتاج · منذ يوم</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/static/js/main.js"></script>
+<script>
+// Revenue chart
+const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو'];
+const values = [45,52,61,70,78,92];
+const container = document.getElementById('revenueChart');
+if(container){
+  months.forEach((m,i)=>{
+    const col = document.createElement('div');
+    col.className='chart-bar-col';
+    col.innerHTML=`<div class="chart-bar-fill" style="height:0px" data-h="${values[i]}"></div><div class="chart-bar-label">${m}</div>`;
+    container.appendChild(col);
+    setTimeout(()=>{ col.querySelector('.chart-bar-fill').style.height=(values[i]/100)*110+'px'; },200+i*100);
+  });
+}
+</script>
+<style>@media(max-width:900px){.admin-grid{grid-template-columns:1fr!important;}}</style>
+</body>
+</html>

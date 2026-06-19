@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CV 2030 — مستقبل العمل يبدأ هنا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Cairo:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─── */
+:root{
+  --void:#050714;
+  --void2:#0a0d1f;
+  --panel:#0d1128;
+  --border:rgba(0,207,255,0.12);
+  --electric:#00CFFF;
+  --gold:#FFB800;
+  --rose:#FF4D8D;
+  --success:#00FFA3;
+  --text:#E8EBF8;
+  --muted:#6B7299;
+  --font-display:'Syne',sans-serif;
+  --font-ar:'Cairo',sans-serif;
+  --font-mono:'Space Mono',monospace;
+  --r:14px;
+  --r-lg:20px;
+  --glow-e:0 0 40px rgba(0,207,255,0.25);
+  --glow-g:0 0 40px rgba(255,184,0,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-ar);
+  background:var(--void);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.75;
+}
+::selection{background:var(--electric);color:var(--void)}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{display:block;max-width:100%}
+
+/* ─── CANVAS BACKGROUND ─── */
+#cosmos{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ─── NAV ─── */
+.nav{
+  position:fixed;top:0;inset-inline:0;z-index:100;
+  padding:0 40px;height:70px;
+  display:flex;align-items:center;gap:32px;
+  background:rgba(5,7,20,0.7);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:.3s;
+}
+.nav.scrolled{background:rgba(5,7,20,0.95)}
+.nav-logo{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--font-display);font-size:1.35rem;font-weight:800;
+  flex-shrink:0;
+}
+.logo-cv{color:var(--electric)}
+.logo-2030{color:var(--gold)}
+.logo-dot{width:6px;height:6px;background:var(--success);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.nav-links{
+  display:flex;align-items:center;gap:4px;margin-inline-start:auto;
+}
+.nav-links a{
+  padding:8px 16px;border-radius:8px;
+  font-size:.875rem;font-weight:600;color:var(--muted);
+  transition:.2s;
+}
+.nav-links a:hover{color:var(--electric);background:rgba(0,207,255,.06)}
+.nav-cta{
+  display:flex;gap:10px;align-items:center;margin-inline-start:8px;
+}
+.btn-ghost-e{
+  padding:9px 22px;border-radius:50px;
+  border:1px solid rgba(0,207,255,.35);color:var(--electric);
+  font-family:var(--font-ar);font-size:.875rem;font-weight:700;
+  cursor:pointer;background:transparent;transition:.25s;
+}
+.btn-ghost-e:hover{background:rgba(0,207,255,.1);border-color:var(--electric)}
+.btn-solid{
+  padding:10px 28px;border-radius:50px;
+  background:var(--electric);color:var(--void);
+  font-family:var(--font-ar);font-size:.875rem;font-weight:900;
+  border:none;cursor:pointer;transition:.25s;
+  box-shadow:0 0 28px rgba(0,207,255,.4);
+}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(0,207,255,.6)}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:100px 24px 80px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(0,207,255,.25);
+  background:rgba(0,207,255,.06);
+  padding:6px 18px 6px 10px;border-radius:50px;
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--electric);margin-bottom:28px;
+}
+.pulse-ring{
+  width:10px;height:10px;border-radius:50%;background:var(--electric);
+  position:relative;flex-shrink:0;
+}
+.pulse-ring::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid var(--electric);animation:sonar 2s infinite;
+}
+@keyframes sonar{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.hero-title{
+  font-family:var(--font-display);
+  font-size:clamp(2.6rem,7vw,5.5rem);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+  max-width:900px;
+}
+.hero-title .line-gold{color:var(--gold)}
+.hero-title .line-e{color:var(--electric)}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.2rem);
+  color:var(--muted);max-width:600px;
+  margin:0 auto 48px;line-height:1.8;
+}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:72px}
+.btn-solid-lg{
+  padding:16px 40px;border-radius:50px;
+  background:var(--electric);color:var(--void);
+  font-family:var(--font-ar);font-size:1rem;font-weight:900;
+  border:none;cursor:pointer;transition:.25s;
+  box-shadow:0 0 40px rgba(0,207,255,.5);
+}
+.btn-solid-lg:hover{transform:translateY(-3px);box-shadow:0 0 60px rgba(0,207,255,.7)}
+.btn-gold-lg{
+  padding:16px 40px;border-radius:50px;
+  background:var(--gold);color:var(--void);
+  font-family:var(--font-ar);font-size:1rem;font-weight:900;
+  border:none;cursor:pointer;transition:.25s;
+  box-shadow:0 0 40px rgba(255,184,0,.4);
+}
+.btn-gold-lg:hover{transform:translateY(-3px);box-shadow:0 0 60px rgba(255,184,0,.6)}
+.hero-metrics{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;
+  border:1px solid var(--border);border-radius:20px;
+  background:rgba(13,17,40,.6);
+  backdrop-filter:blur(20px);
+  overflow:hidden;
+  max-width:750px;margin:0 auto;
+}
+.h-metric{
+  flex:1;min-width:140px;padding:24px;
+  border-inline-start:1px solid var(--border);
+  text-align:center;
+}
+.h-metric:first-child{border-inline-start:none}
+.h-metric-num{
+  font-family:var(--font-mono);
+  font-size:1.9rem;font-weight:700;
+  color:var(--electric);display:block;
+}
+.h-metric-num.gold{color:var(--gold)}
+.h-metric-num.green{color:var(--success)}
+.h-metric-label{font-size:.75rem;color:var(--muted);font-weight:600;margin-top:4px}
+
+/* ─── SECTION BASE ─── */
+.sec{position:relative;z-index:1;padding:120px 24px}
+.container{max-width:1160px;margin:0 auto}
+.sec-label{
+  display:inline-block;
+  font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--electric);margin-bottom:14px;
+}
+.sec-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:800;line-height:1.15;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:580px;line-height:1.8}
+.sec-center{text-align:center}
+.sec-center .sec-sub{margin:0 auto}
+
+/* ─── INVESTOR SECTION ─── */
+.investor-sec{background:var(--void2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.qa-grid{display:flex;flex-direction:column;gap:2px;margin-top:60px}
+.qa-item{
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  background:var(--panel);
+  overflow:hidden;transition:.25s;
+}
+.qa-item:hover{border-color:rgba(0,207,255,.3)}
+.qa-question{
+  display:flex;align-items:center;gap:16px;
+  padding:24px 28px;cursor:pointer;
+  user-select:none;
+}
+.qa-q-num{
+  font-family:var(--font-mono);font-size:.75rem;
+  color:var(--electric);min-width:32px;font-weight:700;
+}
+.qa-q-text{font-weight:700;font-size:1rem;flex:1}
+.qa-icon{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:var(--muted);
+  transition:.3s;flex-shrink:0;
+}
+.qa-item.open .qa-icon{transform:rotate(45deg);border-color:var(--electric);color:var(--electric)}
+.qa-answer{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;
+}
+.qa-answer-inner{
+  padding:0 28px 28px 28px;
+  border-top:1px solid var(--border);
+  padding-top:24px;
+}
+.qa-item.open .qa-answer{max-height:1000px}
+.qa-answer-inner p{color:var(--muted);line-height:1.85;margin-bottom:16px;font-size:.95rem}
+.qa-answer-inner p:last-child{margin-bottom:0}
+.answer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.answer-box{
+  background:rgba(0,207,255,.05);border:1px solid rgba(0,207,255,.12);
+  border-radius:12px;padding:16px;
+}
+.answer-box-num{
+  font-family:var(--font-mono);font-size:1.5rem;font-weight:700;
+  color:var(--electric);display:block;margin-bottom:4px;
+}
+.answer-box-num.gold{color:var(--gold)}
+.answer-box-label{font-size:.78rem;color:var(--muted)}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tag-e{
+  padding:4px 14px;border-radius:50px;font-size:.75rem;font-weight:700;
+  background:rgba(0,207,255,.08);border:1px solid rgba(0,207,255,.2);
+  color:var(--electric);
+}
+.tag-g{
+  padding:4px 14px;border-radius:50px;font-size:.75rem;font-weight:700;
+  background:rgba(255,184,0,.08);border:1px solid rgba(255,184,0,.2);
+  color:var(--gold);
+}
+.tag-r{
+  padding:4px 14px;border-radius:50px;font-size:.75rem;font-weight:700;
+  background:rgba(0,255,163,.08);border:1px solid rgba(0,255,163,.2);
+  color:var(--success);
+}
+.roadmap-line{display:flex;flex-direction:column;gap:0;margin-top:16px}
+.roadmap-step{
+  display:flex;gap:16px;padding-bottom:24px;
+  border-inline-start:2px solid rgba(0,207,255,.15);
+  padding-inline-start:20px;
+  position:relative;
+}
+.roadmap-step::before{
+  content:'';position:absolute;top:4px;inset-inline-start:-5px;
+  width:8px;height:8px;border-radius:50%;background:var(--electric);
+  box-shadow:0 0 10px var(--electric);
+}
+.roadmap-step:last-child{border-inline-start-color:transparent;padding-bottom:0}
+.roadmap-phase{font-size:.72rem;font-weight:700;color:var(--electric);font-family:var(--font-mono);margin-bottom:4px}
+.roadmap-title{font-weight:700;font-size:.95rem;margin-bottom:3px}
+.roadmap-detail{font-size:.82rem;color:var(--muted)}
+.revenue-streams{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.rev-stream{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 16px;border-radius:12px;
+  background:rgba(255,184,0,.05);border:1px solid rgba(255,184,0,.12);
+}
+.rev-icon{font-size:1.2rem}
+.rev-info{flex:1}
+.rev-name{font-weight:700;font-size:.9rem}
+.rev-desc{font-size:.78rem;color:var(--muted)}
+.rev-amount{font-family:var(--font-mono);font-weight:700;color:var(--gold);font-size:.9rem;white-space:nowrap}
+.moat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.moat-item{
+  padding:16px;border-radius:12px;
+  background:rgba(0,255,163,.05);border:1px solid rgba(0,255,163,.12);
+}
+.moat-icon{font-size:1.3rem;margin-bottom:8px}
+.moat-title{font-weight:700;font-size:.9rem;color:var(--success);margin-bottom:4px}
+.moat-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.risk-row{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.risk-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px;border-radius:12px;background:var(--panel);border:1px solid var(--border);
+}
+.risk-badge{
+  padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:800;white-space:nowrap;
+  flex-shrink:0;margin-top:2px;
+}
+.risk-low{background:rgba(0,255,163,.12);color:var(--success)}
+.risk-mid{background:rgba(255,184,0,.12);color:var(--gold)}
+.risk-info{}
+.risk-title{font-weight:700;font-size:.88rem;margin-bottom:3px}
+.risk-mitigation{font-size:.78rem;color:var(--muted)}
+
+/* ─── PROBLEM/SOLUTION ─── */
+.problem-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  margin-top:60px;
+}
+.prob-card{
+  border-radius:var(--r-lg);padding:32px;
+  border:1px solid var(--border);background:var(--panel);
+}
+.prob-card.solution{border-color:rgba(0,207,255,.3);background:rgba(0,207,255,.04)}
+.prob-card-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.prob-card-label.red{color:var(--rose)}
+.prob-card-label.cyan{color:var(--electric)}
+.prob-list{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.prob-list-item{display:flex;align-items:flex-start;gap:12px;font-size:.92rem;line-height:1.6}
+.prob-icon{font-size:1rem;margin-top:2px;flex-shrink:0}
+
+/* ─── MARKET SIZE ─── */
+.market-sec{background:var(--void2);border-top:1px solid var(--border)}
+.market-rings{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;margin-top:60px;flex-wrap:wrap;
+}
+.market-ring-wrap{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  padding:20px 40px;
+}
+.market-ring-wrap:not(:first-child)::before{
+  content:'→';position:absolute;right:calc(100% - 30px);top:50%;transform:translateY(-50%);
+  color:var(--muted);font-size:1rem;
+}
+.mring{
+  width:160px;height:160px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin-bottom:16px;
+  position:relative;
+}
+.mring::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:1px solid;opacity:.25;
+}
+.mring.tam::before{border-color:var(--electric);box-shadow:inset 0 0 40px rgba(0,207,255,.08)}
+.mring.sam::before{border-color:var(--gold);box-shadow:inset 0 0 30px rgba(255,184,0,.08)}
+.mring.som::before{border-color:var(--success);box-shadow:inset 0 0 20px rgba(0,255,163,.08)}
+.mring-num{font-family:var(--font-mono);font-size:1.6rem;font-weight:700}
+.mring-num.c{color:var(--electric)}
+.mring-num.g{color:var(--gold)}
+.mring-num.s{color:var(--success)}
+.mring-label{font-size:.75rem;color:var(--muted);font-weight:700}
+.mring-desc{font-size:.78rem;color:var(--muted);text-align:center;max-width:140px}
+
+/* ─── HOW IT WORKS ─── */
+.flow-steps{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2px;margin-top:60px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;
+}
+.flow-step{
+  background:var(--panel);padding:32px 24px;
+  transition:.25s;
+}
+.flow-step:hover{background:rgba(13,17,40,.8)}
+.flow-step-tag{
+  font-family:var(--font-mono);font-size:.7rem;color:var(--electric);
+  margin-bottom:16px;font-weight:700;
+}
+.flow-icon{font-size:2rem;margin-bottom:14px}
+.flow-step h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;margin-bottom:8px}
+.flow-step p{font-size:.86rem;color:var(--muted);line-height:1.7}
+
+/* ─── FEATURES ─── */
+.features-sec{background:var(--void2);border-top:1px solid var(--border)}
+.feat-bento{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:auto;
+  gap:16px;
+  margin-top:60px;
+}
+.feat-card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:28px;
+  transition:.25s;overflow:hidden;position:relative;
+}
+.feat-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 100% 0%, rgba(0,207,255,.06) 0%, transparent 60%);
+  pointer-events:none;
+}
+.feat-card:hover{border-color:rgba(0,207,255,.3);transform:translateY(-3px);box-shadow:var(--glow-e)}
+.feat-card.large{grid-column:span 3}
+.feat-card.medium{grid-column:span 2}
+.feat-card.small{grid-column:span 2}
+.feat-card-icon{font-size:2.2rem;margin-bottom:18px}
+.feat-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:800;margin-bottom:10px}
+.feat-card p{font-size:.85rem;color:var(--muted);line-height:1.75}
+.feat-demo{margin-top:20px}
+.score-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:.8rem}
+.score-bar-row span:first-child{color:var(--muted);width:120px;text-align:right;flex-shrink:0}
+.score-track{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:50px;overflow:hidden}
+.score-fill{height:100%;border-radius:50px;background:var(--electric);animation:growBar 1.5s ease forwards}
+.score-fill.warn{background:var(--gold)}
+.score-fill.low{background:var(--rose)}
+@keyframes growBar{from{width:0!important}}
+.score-pct{font-family:var(--font-mono);font-size:.72rem;color:var(--text);width:34px;text-align:right;flex-shrink:0}
+
+/* ─── B2B ─── */
+.b2b-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:60px}
+.b2b-visual{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:28px;
+}
+.b2b-visual-title{font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.cand-row{
+  display:flex;align-items:center;gap:12px;
+  padding:12px;border-radius:10px;
+  margin-bottom:8px;background:rgba(0,207,255,.04);
+  border:1px solid rgba(0,207,255,.08);transition:.2s;cursor:pointer;
+}
+.cand-row:hover{border-color:rgba(0,207,255,.25);background:rgba(0,207,255,.08)}
+.cand-av{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.9rem;color:var(--void);flex-shrink:0;
+}
+.cand-info-b{flex:1}
+.cand-name-b{font-weight:700;font-size:.88rem}
+.cand-role-b{font-size:.72rem;color:var(--muted)}
+.cand-match-b{font-family:var(--font-mono);font-size:.9rem;font-weight:700;color:var(--success)}
+.b2b-check-list{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.b2b-check{display:flex;align-items:flex-start;gap:12px}
+.b2b-check-icon{
+  width:24px;height:24px;border-radius:6px;
+  background:rgba(0,255,163,.1);border:1px solid rgba(0,255,163,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;flex-shrink:0;margin-top:2px;
+}
+.b2b-check-text{font-size:.9rem;font-weight:600}
+.b2b-check-sub{font-size:.78rem;color:var(--muted);margin-top:2px}
+
+/* ─── TRACTION ─── */
+.traction-sec{background:var(--void2);border-top:1px solid var(--border)}
+.traction-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:60px}
+.traction-card{
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:28px;background:var(--panel);text-align:center;
+  position:relative;overflow:hidden;
+}
+.traction-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 100%, rgba(0,207,255,.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.traction-num{
+  font-family:var(--font-mono);font-size:2.5rem;font-weight:700;
+  display:block;margin-bottom:6px;
+}
+.traction-num.e{color:var(--electric)}
+.traction-num.g{color:var(--gold)}
+.traction-num.s{color:var(--success)}
+.traction-num.r{color:var(--rose)}
+.traction-label{font-size:.8rem;color:var(--muted);font-weight:600}
+.traction-trend{
+  margin-top:8px;font-size:.72rem;font-weight:700;
+  color:var(--success);font-family:var(--font-mono);
+}
+
+/* ─── TEAM ─── */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:60px}
+.team-card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:28px;
+  transition:.25s;
+}
+.team-card:hover{border-color:rgba(0,207,255,.3);transform:translateY(-3px)}
+.team-av{
+  width:64px;height:64px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin-bottom:16px;
+  border:1px solid var(--border);background:rgba(0,207,255,.06);
+}
+.team-name{font-family:var(--font-display);font-size:1.05rem;font-weight:800;margin-bottom:4px}
+.team-role{font-size:.8rem;color:var(--electric);font-weight:700;margin-bottom:10px}
+.team-bio{font-size:.82rem;color:var(--muted);line-height:1.7}
+
+/* ─── CTA INVESTOR ─── */
+.cta-sec{
+  padding:120px 24px;text-align:center;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,207,255,.1) 0%, transparent 70%),
+             var(--void);
+  border-top:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.cta-sec h2{
+  font-family:var(--font-display);
+  font-size:clamp(2rem,5vw,4rem);
+  font-weight:800;letter-spacing:-.02em;
+  margin-bottom:20px;line-height:1.1;
+}
+.cta-sec h2 em{color:var(--gold);font-style:normal}
+.cta-sub-copy{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto 40px;line-height:1.8}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.invest-box{
+  margin-top:64px;max-width:680px;margin-inline:auto;
+  border:1px solid rgba(255,184,0,.25);border-radius:var(--r-lg);
+  background:rgba(255,184,0,.05);padding:36px;
+}
+.invest-box h3{
+  font-family:var(--font-display);font-size:1.4rem;font-weight:800;
+  color:var(--gold);margin-bottom:8px;
+}
+.invest-box p{color:var(--muted);font-size:.92rem;line-height:1.8;margin-bottom:20px}
+.invest-terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.invest-term{
+  padding:16px;border-radius:10px;
+  background:rgba(255,184,0,.05);border:1px solid rgba(255,184,0,.12);
+  text-align:center;
+}
+.invest-term-val{font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--gold);display:block;margin-bottom:4px}
+.invest-term-label{font-size:.72rem;color:var(--muted)}
+
+/* ─── FOOTER ─── */
+.footer{
+  background:var(--void2);border-top:1px solid var(--border);
+  padding:48px 40px;position:relative;z-index:1;
+}
+.footer-inner{
+  max-width:1160px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.footer-logo{font-family:var(--font-display);font-size:1.2rem;font-weight:800}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:.82rem;color:var(--muted);transition:.2s}
+.footer-links a:hover{color:var(--electric)}
+.footer-copy{font-size:.75rem;color:var(--muted)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1000px){
+  .feat-card.large,.feat-card.medium,.feat-card.small{grid-column:span 6}
+  .problem-grid{grid-template-columns:1fr}
+  .b2b-grid{grid-template-columns:1fr}
+  .market-rings{flex-direction:column}
+  .market-ring-wrap:not(:first-child)::before{content:'↓';right:auto;top:auto;position:static;display:block;text-align:center;margin-bottom:12px}
+}
+@media(max-width:768px){
+  .nav{padding:0 16px}
+  .nav-links,.nav-cta{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:70px;inset-inline:0;background:rgba(5,7,20,.97);padding:16px;gap:4px;border-bottom:1px solid var(--border)}
+  .nav-cta.open{display:flex;flex-direction:column;padding:0 16px 16px;background:rgba(5,7,20,.97);gap:10px}
+  .burger{display:flex}
+  .feat-bento{display:flex;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<canvas id="cosmos"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">
+    <span class="logo-cv">CV</span><span class="logo-2030">2030</span>
+    <div class="logo-dot"></div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#problem">المشكلة</a></li>
+    <li><a href="#market">السوق</a></li>
+    <li><a href="#platform">المنصة</a></li>
+    <li><a href="#investor">للمستثمرين</a></li>
+    <li><a href="#team">الفريق</a></li>
+  </ul>
+  <div class="nav-cta" id="navCta">
+    <button class="btn-ghost-e" onclick="window.location.href='/login'">دخول</button>
+    <button class="btn-solid" onclick="window.location.href='/register'">ابدأ مجاناً</button>
+  </div>
+  <button class="burger" id="burger" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <div class="pulse-ring"></div>
+    مدعوم بالذكاء الاصطناعي — موجة العمل القادمة
+  </div>
+  <h1 class="hero-title">
+    <span>مستقبل وظيفتك</span><br/>
+    <span class="line-gold">حتى عام 2030</span><br/>
+    <span class="line-e">نحسبه لك الآن</span>
+  </h1>
+  <p class="hero-sub">
+    المنصة الوحيدة التي تحلل سيرتك الذاتية بالذكاء الاصطناعي وتخبرك إذا كانت وظيفتك ستختفي — مع خطة هروب كاملة قبل أن تختفي.
+  </p>
+  <div class="hero-actions">
+    <button class="btn-solid-lg" onclick="window.location.href='/register'">اكتشف مستقبلك مجاناً ←</button>
+    <button class="btn-gold-lg" onclick="document.getElementById('investor').scrollIntoView({behavior:'smooth'})">📊 عرض المستثمرين</button>
+  </div>
+  <div class="hero-metrics">
+    <div class="h-metric">
+      <span class="h-metric-num" data-target="1200000000" data-prefix="$" data-suffix="B" data-divide="1000000000">$0B</span>
+      <div class="h-metric-label">حجم السوق المستهدف</div>
+    </div>
+    <div class="h-metric">
+      <span class="h-metric-num gold" data-target="85" data-suffix="%">0%</span>
+      <div class="h-metric-label">من الوظائف ستتأثر بالأتمتة 2030</div>
+    </div>
+    <div class="h-metric">
+      <span class="h-metric-num green" data-target="3200000000" data-prefix="" data-suffix="B عامل" data-divide="1000000000">0B</span>
+      <div class="h-metric-label">قوة العمل العالمية</div>
+    </div>
+    <div class="h-metric">
+      <span class="h-metric-num" data-target="19" data-suffix="$/شهر">$0</span>
+      <div class="h-metric-label">سعر الاشتراك الفردي</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM + SOLUTION -->
+<section class="sec" id="problem">
+  <div class="container">
+    <div class="sec-label">المشكلة والحل</div>
+    <div class="sec-title">مليار شخص لا يعرف<br/>ماذا سيعمل بعد 5 سنوات</div>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-card-label red">🔴 المشكلة الحالية</div>
+        <div class="prob-list">
+          <div class="prob-list-item"><span class="prob-icon">⚡</span><span>85% من الوظائف الحالية ستتغير جذرياً أو تختفي بحلول 2030 بسبب AI والأتمتة</span></div>
+          <div class="prob-list-item"><span class="prob-icon">⚡</span><span>العمال لا يعرفون ما هي المهارات التي يحتاجون إليها أو من أين يبدأون</span></div>
+          <div class="prob-list-item"><span class="prob-icon">⚡</span><span>منصات التوظيف التقليدية تبحث عن وظيفة اليوم، لا تضمن مستقبل الغد</span></div>
+          <div class="prob-list-item"><span class="prob-icon">⚡</span><span>التكيف مع التغيرات يستغرق سنوات ومعظم الناس يكتشفون ذلك متأخراً جداً</span></div>
+          <div class="prob-list-item"><span class="prob-icon">⚡</span><span>الكورسات متاحة على الإنترنت لكن لا أحد يخبرك أيها المناسب لوضعك تحديداً</span></div>
+        </div>
+      </div>
+      <div class="prob-card solution">
+        <div class="prob-card-label cyan">🟦 حل CV 2030</div>
+        <div class="prob-list">
+          <div class="prob-list-item"><span class="prob-icon">✦</span><span>AI يحلل سيرتك الذاتية ويعطيك نسبة بقاء وظيفتك حتى 2030 خلال 60 ثانية</span></div>
+          <div class="prob-list-item"><span class="prob-icon">✦</span><span>خارطة طريق مخصصة 100% لك تحديداً — وظائف بديلة وكورسات وجدول تدريبي</span></div>
+          <div class="prob-list-item"><span class="prob-icon">✦</span><span>تقييم احتمالية قبولك في أي وظيفة قبل أن تتقدم — كن متأهباً لا تكن مفاجأً</span></div>
+          <div class="prob-list-item"><span class="prob-icon">✦</span><span>بحث موحد في LinkedIn و Wuzzuf و Bayt وغيرها في آن واحد</span></div>
+          <div class="prob-list-item"><span class="prob-icon">✦</span><span>منصة B2B للشركات تحجز مقابلات مباشرة مع المرشحين الأكثر توافقاً</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET SIZE -->
+<section class="sec market-sec" id="market">
+  <div class="container sec-center">
+    <div class="sec-label">حجم السوق</div>
+    <div class="sec-title">السوق الأكبر في تاريخ التوظيف</div>
+    <p class="sec-sub">أتمتة الوظائف لا تعني نهاية العمل — تعني إعادة تدريب مليارات البشر. هذا هو السوق الذي ندخله.</p>
+    <div class="market-rings">
+      <div class="market-ring-wrap">
+        <div class="mring tam">
+          <div class="mring-num c">$4.2T</div>
+          <div class="mring-label">TAM</div>
+        </div>
+        <div class="mring-desc">إجمالي سوق تطوير المهارات والتوظيف عالمياً</div>
+      </div>
+      <div class="market-ring-wrap">
+        <div class="mring sam">
+          <div class="mring-num g">$680B</div>
+          <div class="mring-label">SAM</div>
+        </div>
+        <div class="mring-desc">سوق المنصات الرقمية للتوظيف وإعادة التدريب</div>
+      </div>
+      <div class="market-ring-wrap">
+        <div class="mring som">
+          <div class="mring-num s">$2.8B</div>
+          <div class="mring-label">SOM</div>
+        </div>
+        <div class="mring-desc">السوق المتاح لنا في MENA خلال 5 سنوات</div>
+      </div>
+    </div>
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:800px;margin-inline:auto">
+      <div class="answer-box"><span class="answer-box-num">375M</span><span class="answer-box-label">وظيفة ستتأثر بالأتمتة بحلول 2030 — McKinsey</span></div>
+      <div class="answer-box"><span class="answer-box-num">$8.5T</span><span class="answer-box-label">تكلفة فجوة المهارات على الاقتصاد العالمي بحلول 2030</span></div>
+      <div class="answer-box"><span class="answer-box-num">90M+</span><span class="answer-box-label">عامل في منطقة MENA يحتاجون إعادة تأهيل مهني</span></div>
+      <div class="answer-box"><span class="answer-box-num gold">32%</span><span class="answer-box-label">النمو السنوي في سوق EdTech & Future of Work</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="platform">
+  <div class="container">
+    <div class="sec-label">كيف تعمل المنصة</div>
+    <div class="sec-title">من سيرة ذاتية<br/>إلى مستقبل مضمون</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-tag">STEP 01</div>
+        <div class="flow-icon">📄</div>
+        <h3>ارفع سيرتك</h3>
+        <p>PDF أو Word. نقرأها بالكامل خلال ثوانٍ ونستخرج مهاراتك وخبراتك ومسارك المهني.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-tag">STEP 02</div>
+        <div class="flow-icon">🧠</div>
+        <h3>AI يحلل مستقبلك</h3>
+        <p>نقارن مهاراتك بآلاف بيانات سوق العمل لنعطيك نسبة مئوية دقيقة لبقاء وظيفتك.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-tag">STEP 03</div>
+        <div class="flow-icon">🗺️</div>
+        <h3>تلقّى خارطة طريقك</h3>
+        <p>وظائف بديلة مناسبة لمهاراتك + كورسات مختارة + جدول تدريبي أسبوعي واقعي.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-tag">STEP 04</div>
+        <div class="flow-icon">🎯</div>
+        <h3>قدّم بذكاء</h3>
+        <p>اعرف احتمالية قبولك قبل أي طلب. اجتز الاختبارات لرفع نسبتك. تقدم وأنت واثق.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES BENTO -->
+<section class="sec features-sec">
+  <div class="container">
+    <div class="sec-label">المميزات</div>
+    <div class="sec-title">كل ما تحتاجه<br/>في مكان واحد</div>
+    <div class="feat-bento">
+      <div class="feat-card large">
+        <div class="feat-card-icon">📊</div>
+        <h3>تحليل بقاء وظيفتك حتى 2030</h3>
+        <p>نسبة مئوية حقيقية مبنية على بيانات عالمية من McKinsey و WEF و LinkedIn — لا تخمين.</p>
+        <div class="feat-demo">
+          <div class="score-bar-row"><span>خدمة العملاء</span><div class="score-track"><div class="score-fill" style="width:72%"></div></div><span class="score-pct">72%</span></div>
+          <div class="score-bar-row"><span>عامل مصنع</span><div class="score-track"><div class="score-fill warn" style="width:31%"></div></div><span class="score-pct">31%</span></div>
+          <div class="score-bar-row"><span>مدير مبيعات</span><div class="score-track"><div class="score-fill" style="width:88%"></div></div><span class="score-pct">88%</span></div>
+          <div class="score-bar-row"><span>محاسب تقليدي</span><div class="score-track"><div class="score-fill low" style="width:22%"></div></div><span class="score-pct">22%</span></div>
+        </div>
+      </div>
+      <div class="feat-card medium">
+        <div class="feat-card-icon">⬆️</div>
+        <h3>فرص الترقية الداخلية</h3>
+        <p>نكتشف الوظائف الشاغرة في شركتك الحالية ونقيّم احتمالية قبولك فيها قبل أن تتقدم.</p>
+      </div>
+      <div class="feat-card small">
+        <div class="feat-card-icon">🧪</div>
+        <h3>اختبارات تزيد قبولك</h3>
+        <p>كل اختبار تجتازه يرفع نسبة قبولك عند المجندين مباشرةً.</p>
+      </div>
+      <div class="feat-card small">
+        <div class="feat-card-icon">🔍</div>
+        <h3>بحث موحد</h3>
+        <p>LinkedIn + Wuzzuf + Bayt + Indeed في بحث واحد. لا تضيع وقتك.</p>
+      </div>
+      <div class="feat-card medium">
+        <div class="feat-card-icon">🎓</div>
+        <h3>كورسات مخصصة 100%</h3>
+        <p>لا نعطيك قائمة عشوائية. نختار فقط الكورسات التي تخدم وظيفتك المستهدفة تحديداً من Udemy و Coursera و Alison.</p>
+      </div>
+      <div class="feat-card large">
+        <div class="feat-card-icon">🏢</div>
+        <h3>منصة B2B للشركات والمجندين</h3>
+        <p>الشركات تنشر متطلباتها، نوجّهها للمرشحين الأكثر توافقاً تلقائياً. حجز مقابلات مباشر. وصول لقاعدة بيانات حية.</p>
+        <div class="tag-row" style="margin-top:16px">
+          <span class="tag-e">ATS Integration</span>
+          <span class="tag-g">Direct Interview Booking</span>
+          <span class="tag-r">Match Score 94%+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B2B -->
+<section class="sec" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="b2b-grid">
+      <div>
+        <div class="sec-label">للشركات — B2B</div>
+        <div class="sec-title">الوصول للمواهب الصح<br/>أصبح علمياً</div>
+        <div class="b2b-check-list">
+          <div class="b2b-check"><div class="b2b-check-icon">✓</div><div><div class="b2b-check-text">فلترة AI متقدمة</div><div class="b2b-check-sub">ابحث بالمهارات والخبرات ونتائج الاختبارات ونسبة التوافق مع وظيفتك</div></div></div>
+          <div class="b2b-check"><div class="b2b-check-icon">✓</div><div><div class="b2b-check-text">ملف مرشح شامل</div><div class="b2b-check-sub">CV + اختبارات + نسبة توافق + تقرير AI كامل عن المرشح</div></div></div>
+          <div class="b2b-check"><div class="b2b-check-icon">✓</div><div><div class="b2b-check-text">حجز مقابلات مباشر</div><div class="b2b-check-sub">بدون تبادل إيميلات — اختر الوقت واضغط حجز</div></div></div>
+          <div class="b2b-check"><div class="b2b-check-icon">✓</div><div><div class="b2b-check-text">إعلان الكورسات لجمهور مستهدف</div><div class="b2b-check-sub">مزودو الكورسات يعلنون للأشخاص الذين يحتاجونهم فعلاً</div></div></div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+          <button class="btn-solid" onclick="window.location.href='/recruiter'">ابدأ كشركة</button>
+          <button class="btn-ghost-e">تواصل معنا</button>
+        </div>
+      </div>
+      <div class="b2b-visual">
+        <div class="b2b-visual-title">🔎 مرشحون مقترحون — مشرف جودة</div>
+        <div class="cand-row">
+          <div class="cand-av" style="background:linear-gradient(135deg,#00CFFF,#00FFA3)">س</div>
+          <div class="cand-info-b"><div class="cand-name-b">سارة أحمد</div><div class="cand-role-b">6 سنوات · ISO 9001 · Excel متقدم</div></div>
+          <div class="cand-match-b">94%</div>
+        </div>
+        <div class="cand-row">
+          <div class="cand-av" style="background:linear-gradient(135deg,#FFB800,#FF4D8D)">م</div>
+          <div class="cand-info-b"><div class="cand-name-b">محمد علي</div><div class="cand-role-b">9 سنوات · Lean · Six Sigma</div></div>
+          <div class="cand-match-b">91%</div>
+        </div>
+        <div class="cand-row">
+          <div class="cand-av" style="background:linear-gradient(135deg,#8B5CF6,#00CFFF)">ن</div>
+          <div class="cand-info-b"><div class="cand-name-b">نور حسن</div><div class="cand-role-b">4 سنوات · مراقبة جودة · SAP</div></div>
+          <div class="cand-match-b">87%</div>
+        </div>
+        <div style="margin-top:16px;padding:14px;background:rgba(0,207,255,.06);border-radius:10px;border:1px solid rgba(0,207,255,.12)">
+          <div style="font-size:.75rem;color:var(--muted);margin-bottom:6px;font-weight:700">متوسط وقت الإيجاد</div>
+          <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--electric)">4.2 ساعات</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:2px">مقارنة بـ 3-4 أسابيع بالطرق التقليدية</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR Q&A -->
+<section class="sec investor-sec" id="investor">
+  <div class="container">
+    <div class="sec-label">عرض المستثمرين</div>
+    <div class="sec-title">الأسئلة التي يسألها<br/>كل مستثمر ذكي</div>
+    <p class="sec-sub">نجيب بشفافية كاملة. لأن المنصة التي تشرح مستقبل العمل بوضوح يجب أن تشرح نفسها بنفس الوضوح.</p>
+
+    <div class="qa-grid">
+
+      <!-- Q1 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q1</span>
+          <span class="qa-q-text">ما هو الـ Problem Market Fit؟ هل فيه طلب حقيقي أم مجرد فكرة جميلة؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <p>الطلب ليس افتراضياً — إنه أزمة موثقة. وفق WEF و McKinsey، 85 مليون وظيفة ستختفي بحلول 2025 و375 مليون بحلول 2030. الناس يشعرون بهذا القلق يومياً لكن لا يجدون أداة تعطيهم إجابات شخصية دقيقة — فقط مقالات عامة.</p>
+          <p>Signal آخر: LinkedIn Premium يجني $4B سنوياً فقط من الناس الذين يريدون "ميزة" في البحث عن عمل. نحن نقدم ميزة أعمق بكثير: التخطيط للمستقبل وليس البحث في الحاضر.</p>
+          <div class="answer-grid">
+            <div class="answer-box"><span class="answer-box-num">375M</span><span class="answer-box-label">وظيفة ستتأثر بالأتمتة — McKinsey</span></div>
+            <div class="answer-box"><span class="answer-box-num">$8.5T</span><span class="answer-box-label">خسائر اقتصادية من فجوة المهارات 2030</span></div>
+            <div class="answer-box"><span class="answer-box-num gold">94%</span><span class="answer-box-label">من مستخدمي beta أكملوا التسجيل كاملاً</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q2</span>
+          <span class="qa-q-text">ما نموذج الإيراد؟ كيف تكسب المال؟ وما الـ Unit Economics؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <p>لدينا 4 مصادر إيراد متنوعة تحمي من الاعتماد على مصدر واحد:</p>
+          <div class="revenue-streams">
+            <div class="rev-stream">
+              <div class="rev-icon">👤</div>
+              <div class="rev-info"><div class="rev-name">اشتراك فردي Pro</div><div class="rev-desc">تحليل غير محدود + كورسات + تتبع التقدم</div></div>
+              <div class="rev-amount">$19/شهر</div>
+            </div>
+            <div class="rev-stream">
+              <div class="rev-icon">🏢</div>
+              <div class="rev-info"><div class="rev-name">B2B — شركات</div><div class="rev-desc">وصول للمرشحين + أدوات التوظيف + ATS</div></div>
+              <div class="rev-amount">$99–$499/شهر</div>
+            </div>
+            <div class="rev-stream">
+              <div class="rev-icon">🎓</div>
+              <div class="rev-info"><div class="rev-name">إعلانات الكورسات</div><div class="rev-desc">Udemy, Coursera يدفعون عمولة لكل تسجيل</div></div>
+              <div class="rev-amount">15-30% عمولة</div>
+            </div>
+            <div class="rev-stream">
+              <div class="rev-icon">📊</div>
+              <div class="rev-info"><div class="rev-name">بيانات سوق العمل</div><div class="rev-desc">تقارير للحكومات والمؤسسات البحثية</div></div>
+              <div class="rev-amount">$5,000+/تقرير</div>
+            </div>
+          </div>
+          <div class="answer-grid" style="margin-top:16px">
+            <div class="answer-box"><span class="answer-box-num gold">$4.2</span><span class="answer-box-label">CAC المتوقع (تكلفة اكتساب مستخدم)</span></div>
+            <div class="answer-box"><span class="answer-box-num">$228</span><span class="answer-box-label">LTV للمستخدم الفردي (12 شهر)</span></div>
+            <div class="answer-box"><span class="answer-box-num">54x</span><span class="answer-box-label">نسبة LTV:CAC — استثنائية</span></div>
+            <div class="answer-box"><span class="answer-box-num gold">68%</span><span class="answer-box-label">هامش ربح صافي متوقع (SaaS)</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q3</span>
+          <span class="qa-q-text">ما الـ Competitive Advantage؟ ليش ما يكرّرها LinkedIn أو Google؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <p>سؤال ذكي. الجواب في ثلاث طبقات دفاعية:</p>
+          <div class="moat-grid">
+            <div class="moat-item">
+              <div class="moat-icon">🔒</div>
+              <div class="moat-title">Data Moat</div>
+              <div class="moat-desc">كل تحليل نعمله يغذّي نموذجنا. بعد 100K تحليل نكون أدق من أي منافس يبدأ من الصفر.</div>
+            </div>
+            <div class="moat-item">
+              <div class="moat-icon">🌍</div>
+              <div class="moat-title">MENA Focus</div>
+              <div class="moat-desc">LinkedIn عام جداً. نحن متخصصون في MENA بيانات السوق المحلية، اللغة، والثقافة المهنية.</div>
+            </div>
+            <div class="moat-item">
+              <div class="moat-icon">🔄</div>
+              <div class="moat-title">Network Effect</div>
+              <div class="moat-desc">كل شركة تنضم تجلب مرشحين. كل مرشح ينضم يجذب شركات. flywheel effect حقيقي.</div>
+            </div>
+            <div class="moat-item">
+              <div class="moat-icon">🎯</div>
+              <div class="moat-title">Specificity</div>
+              <div class="moat-desc">LinkedIn يخبرك "ضع مهارة Excel" — نحن نخبرك "أكمل هذا الكورس تحديداً وستصبح مؤهلاً لهذه الوظيفة خلال 8 أسابيع."</div>
+            </div>
+          </div>
+          <div class="tag-row" style="margin-top:14px">
+            <span class="tag-e">First Mover في MENA</span>
+            <span class="tag-g">بيانات عربية محلية</span>
+            <span class="tag-r">AI مخصص للمنطقة</span>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q4</span>
+          <span class="qa-q-text">ما خطة النمو والـ Go-To-Market؟ كيف تصلون لـ 1 مليون مستخدم؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <div class="roadmap-line">
+            <div class="roadmap-step">
+              <div>
+                <div class="roadmap-phase">PHASE 1 · شهر 1-6</div>
+                <div class="roadmap-title">MVP + أول 10,000 مستخدم</div>
+                <div class="roadmap-detail">إطلاق مصر أولاً. شراكات مع 3 جامعات كبرى (مجاني للطلاب). محتوى TikTok/YouTube ينتشر بـ "فحص مستقبل وظيفتك في 60 ثانية".</div>
+              </div>
+            </div>
+            <div class="roadmap-step">
+              <div>
+                <div class="roadmap-phase">PHASE 2 · شهر 7-18</div>
+                <div class="roadmap-title">MENA Expansion + B2B Launch</div>
+                <div class="roadmap-detail">السعودية + الإمارات + الكويت. تعاقد مع 50 شركة B2B. Integration مع منصات التوظيف الكبرى. هدف: 150K مستخدم.</div>
+              </div>
+            </div>
+            <div class="roadmap-step">
+              <div>
+                <div class="roadmap-phase">PHASE 3 · شهر 19-36</div>
+                <div class="roadmap-title">Scale + Data Product</div>
+                <div class="roadmap-detail">تركيا + باكستان + إفريقيا. بيع بيانات سوق العمل للحكومات والشركات الكبرى. Series A. هدف: 1M+ مستخدم.</div>
+              </div>
+            </div>
+          </div>
+          <div class="answer-grid" style="margin-top:14px">
+            <div class="answer-box"><span class="answer-box-num">$1.2</span><span class="answer-box-label">CAC عبر Organic (محتوى + SEO)</span></div>
+            <div class="answer-box"><span class="answer-box-num gold">$8.4</span><span class="answer-box-label">CAC عبر Paid Ads</span></div>
+            <div class="answer-box"><span class="answer-box-num">35%</span><span class="answer-box-label">معدل Referral متوقع — "أخبر صاحبك"</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q5</span>
+          <span class="qa-q-text">ما المخاطر الرئيسية وكيف تتعاملون معها؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <div class="risk-row">
+            <div class="risk-item">
+              <div><div class="risk-badge risk-mid">متوسط</div></div>
+              <div class="risk-info">
+                <div class="risk-title">منافسة من LinkedIn أو Indeed</div>
+                <div class="risk-mitigation">✦ تحوّط: نركز على MENA بالعربية وبيانات محلية لا تملكها المنصات الدولية. حجمنا الصغير ميزة لا عيب في هذه المرحلة.</div>
+              </div>
+            </div>
+            <div class="risk-item">
+              <div><div class="risk-badge risk-low">منخفض</div></div>
+              <div class="risk-info">
+                <div class="risk-title">دقة التنبؤات (AI Accuracy)</div>
+                <div class="risk-mitigation">✦ تحوّط: نعتمد على بيانات WEF/McKinsey كأساس ونحدّثها ربع سنوياً. المستخدم يرى "نطاق" وليس رقماً واحداً.</div>
+              </div>
+            </div>
+            <div class="risk-item">
+              <div><div class="risk-badge risk-low">منخفض</div></div>
+              <div class="risk-info">
+                <div class="risk-title">تحديات اكتساب المستخدمين</div>
+                <div class="risk-mitigation">✦ تحوّط: تكلفة اكتساب منخفضة جداً ($1.2 عبر Organic). المحتوى الفيروسي "وظيفتك ستختفي؟" يجذب تلقائياً.</div>
+              </div>
+            </div>
+            <div class="risk-item">
+              <div><div class="risk-badge risk-low">منخفض</div></div>
+              <div class="risk-info">
+                <div class="risk-title">الخصوصية وحماية البيانات</div>
+                <div class="risk-mitigation">✦ تحوّط: GDPR compliant من اليوم الأول. لا نبيع بيانات فردية. بيانات مجمّعة فقط للشركات.</div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q6</span>
+          <span class="qa-q-text">ما حجم الجولة الحالية؟ وكيف ستستخدمون الأموال؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <p>نبحث عن <strong style="color:var(--gold)">$500K Seed Round</strong> مقابل 12% equity. التقييم قبل الاستثمار: $4.2M (مبني على منهجية Berkus + Revenue Multiple).</p>
+          <div class="answer-grid" style="margin-top:14px;margin-bottom:16px">
+            <div class="answer-box"><span class="answer-box-num gold">45%</span><span class="answer-box-label">Product & Engineering ($225K)</span></div>
+            <div class="answer-box"><span class="answer-box-num gold">30%</span><span class="answer-box-label">Growth & Marketing ($150K)</span></div>
+            <div class="answer-box"><span class="answer-box-num gold">15%</span><span class="answer-box-label">Operations & Legal ($75K)</span></div>
+            <div class="answer-box"><span class="answer-box-num gold">10%</span><span class="answer-box-label">Working Capital ($50K)</span></div>
+          </div>
+          <p>بهذا الاستثمار نصل لـ <strong style="color:var(--electric)">10,000 مستخدم</strong> و<strong style="color:var(--electric)">$18K MRR</strong> خلال 6 أشهر — وهو ما يُجهّزنا لـ Series A بتقييم $20-30M.</p>
+        </div></div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q7</span>
+          <span class="qa-q-text">ما التوقعات المالية الواقعية خلال 3-5 سنوات؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <div class="answer-grid">
+            <div class="answer-box"><span class="answer-box-num" style="font-size:1.1rem">السنة 1</span><span class="answer-box-label" style="font-size:.85rem;color:var(--electric)">$216K ARR · 10K مستخدم</span></div>
+            <div class="answer-box"><span class="answer-box-num" style="font-size:1.1rem">السنة 2</span><span class="answer-box-label" style="font-size:.85rem;color:var(--electric)">$1.8M ARR · 75K مستخدم</span></div>
+            <div class="answer-box"><span class="answer-box-num" style="font-size:1.1rem">السنة 3</span><span class="answer-box-label" style="font-size:.85rem;color:var(--electric)">$7.2M ARR · 280K مستخدم</span></div>
+            <div class="answer-box"><span class="answer-box-num gold" style="font-size:1.1rem">السنة 5</span><span class="answer-box-label" style="font-size:.85rem;color:var(--gold)">$38M ARR · 1.2M مستخدم</span></div>
+          </div>
+          <p style="margin-top:16px">هذه أرقام Conservative (سيناريو متحفظ). السيناريو الأمثل عند تحقيق شراكات حكومية يصل ARR لـ $80M في السنة الخامسة. مضروب 8x SaaS Multiple = قيمة خروج محتملة <strong style="color:var(--gold)">$640M</strong>.</p>
+          <div class="tag-row">
+            <span class="tag-r">Breakeven: شهر 18</span>
+            <span class="tag-g">Positive Cash Flow: شهر 22</span>
+            <span class="tag-e">Exit Target: M&A أو IPO السنة 6-7</span>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q8</span>
+          <span class="qa-q-text">ما استراتيجية الخروج (Exit Strategy) للمستثمر؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <p>ثلاثة مسارات واقعية للخروج، مرتبة حسب الأرجحية:</p>
+          <div class="moat-grid">
+            <div class="moat-item">
+              <div class="moat-icon">🤝</div>
+              <div class="moat-title" style="color:var(--gold)">M&A اكتساب (الأعلى احتمالاً)</div>
+              <div class="moat-desc">SAP, Oracle, LinkedIn, Microsoft تبحث دائماً عن منصات بيانات سوق العمل في MENA. تقييم محتمل: 8-12x ARR.</div>
+            </div>
+            <div class="moat-item">
+              <div class="moat-icon">📈</div>
+              <div class="moat-title" style="color:var(--electric)">IPO في Tadawul أو EGX</div>
+              <div class="moat-desc">عند الوصول لـ $30M+ ARR. البورصة السعودية تُقدّر شركات Tech/HR بضخامة في الفترة الحالية.</div>
+            </div>
+            <div class="moat-item">
+              <div class="moat-icon">🏛️</div>
+              <div class="moat-title" style="color:var(--success)">شراكة حكومية استراتيجية</div>
+              <div class="moat-desc">وزارات العمل في السعودية ومصر والإمارات تدفع مئات الملايين لمنصات إعادة التأهيل. نحن حل جاهز.</div>
+            </div>
+          </div>
+          <p style="margin-top:14px">في أسوأ سيناريو: ARR بـ $7M في السنة 3 × 6x multiple = <strong style="color:var(--electric)">$42M تقييم</strong>. استثمار $500K بـ 12% = <strong style="color:var(--gold)">$5M عائد = 10x في 3 سنوات</strong>.</p>
+        </div></div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q9</span>
+          <span class="qa-q-text">ما الـ Traction الحالي؟ هل يوجد دليل على أن الناس يريدون هذا؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <p>Beta مغلق منذ 3 أشهر. النتائج تتجاوز توقعاتنا:</p>
+          <div class="answer-grid">
+            <div class="answer-box"><span class="answer-box-num">847</span><span class="answer-box-label">مستخدم Beta بدون إعلان واحد</span></div>
+            <div class="answer-box"><span class="answer-box-num gold">94%</span><span class="answer-box-label">أكملوا التسجيل الكامل (إشارة قبول قوية)</span></div>
+            <div class="answer-box"><span class="answer-box-num">68%</span><span class="answer-box-label">عادوا للمنصة في الأسبوع الثاني (Retention)</span></div>
+            <div class="answer-box"><span class="answer-box-num">NPS 71</span><span class="answer-box-label">Net Promoter Score (ممتاز للمرحلة الأولى)</span></div>
+          </div>
+          <div class="tag-row" style="margin-top:14px">
+            <span class="tag-r">12 شركة أبدت اهتماماً بـ B2B Pilot</span>
+            <span class="tag-g">مفاوضات مع جامعتين كبريين</span>
+            <span class="tag-e">Letter of Intent من شركة توظيف إقليمية</span>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-num">Q10</span>
+          <span class="qa-q-text">لماذا أنتم؟ ما الذي يجعل هذا الفريق قادراً على تنفيذ هذه الرؤية؟</span>
+          <div class="qa-icon">+</div>
+        </div>
+        <div class="qa-answer"><div class="qa-answer-inner">
+          <p>المؤسس عاش المشكلة شخصياً. خبرة مباشرة في خدمة العملاء والعمليات في BNPL (Tabby) والاتصالات (Etisalat) — يعرف كيف يفكر صاحب العمل وكيف يفكر الموظف في نفس الوقت. هذا ما يجعله يصمم حلاً يخدم الجانبين بعمق.</p>
+          <p>الفريق يُبنى حول ثلاث ركائز: خبرة عمليات بشرية عميقة + تقنية AI + فهم سوق MENA من الداخل. لا نحاول إقناع سوق لا نعرفه — نحن السوق.</p>
+          <div class="tag-row">
+            <span class="tag-e">خبرة BNPL + Fintech</span>
+            <span class="tag-g">Customer Experience Operations</span>
+            <span class="tag-r">فهم عميق لسوق مصر والخليج</span>
+          </div>
+        </div></div>
+      </div>
+
+    </div><!-- end qa-grid -->
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section class="sec traction-sec" id="traction">
+  <div class="container sec-center">
+    <div class="sec-label">المؤشرات الحالية</div>
+    <div class="sec-title">أرقام Beta تتحدث</div>
+    <div class="traction-grid">
+      <div class="traction-card">
+        <span class="traction-num e" data-target="847">0</span>
+        <div class="traction-label">مستخدم Beta نشط</div>
+        <div class="traction-trend">↑ بدون إعلان واحد</div>
+      </div>
+      <div class="traction-card">
+        <span class="traction-num g" data-target="94" data-suffix="%">0%</span>
+        <div class="traction-label">معدل إكمال التسجيل</div>
+        <div class="traction-trend">↑ صناعي: 40-60%</div>
+      </div>
+      <div class="traction-card">
+        <span class="traction-num s" data-target="68" data-suffix="%">0%</span>
+        <div class="traction-label">Week-2 Retention</div>
+        <div class="traction-trend">↑ صناعي: 25-35%</div>
+      </div>
+      <div class="traction-card">
+        <span class="traction-num r" data-target="71">0</span>
+        <div class="traction-label">Net Promoter Score</div>
+        <div class="traction-trend">↑ ممتاز (فوق 50)</div>
+      </div>
+      <div class="traction-card">
+        <span class="traction-num e" data-target="12">0</span>
+        <div class="traction-label">شركة B2B مهتمة</div>
+        <div class="traction-trend">↑ Letter of Intent × 1</div>
+      </div>
+      <div class="traction-card">
+        <span class="traction-num g" data-target="4.2" data-suffix="M" data-float="true">$0M</span>
+        <div class="traction-label">Pre-Money Valuation</div>
+        <div class="traction-trend">مبني على Berkus Method</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec" id="team" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="sec-label sec-center">الفريق</div>
+    <div class="sec-title sec-center">أناس يعرفون السوق<br/>من الداخل</div>
+    <div class="team-grid" style="margin-top:60px">
+      <div class="team-card">
+        <div class="team-av">👨‍💼</div>
+        <div class="team-name">محمد — المؤسس والـ CEO</div>
+        <div class="team-role">Operations & Customer Experience</div>
+        <div class="team-bio">خبرة في BNPL (Tabby)، اتصالات (Etisalat)، وعمليات خدمة العملاء. عاش مشكلة التنقل الوظيفي شخصياً وقرر يبني الحل.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-av">🧠</div>
+        <div class="team-name">منصب مفتوح — CTO</div>
+        <div class="team-role">AI / ML Engineer</div>
+        <div class="team-bio">نبحث عن مهندس AI بخبرة NLP وتحليل بيانات سوق العمل. خبرة 5+ سنوات في Python/LLMs.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-av">📈</div>
+        <div class="team-name">منصب مفتوح — CMO</div>
+        <div class="team-role">Growth & Marketing</div>
+        <div class="team-bio">نبحث عن متخصص نمو رقمي بخبرة في MENA. يفهم كيف يصل المحتوى لعمال المصانع وموظفي الشركات الكبرى في نفس الوقت.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-av">🎯</div>
+        <div class="team-name">مستشارون مطلوبون</div>
+        <div class="team-role">Advisory Board</div>
+        <div class="team-bio">نبحث عن مستشارين من: HR Tech, MENA VC, EdTech, وخبراء سوق العمل الإقليمي. الحصة: 0.5-1% Advisor Equity.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="container">
+    <h2>الوقت هو<br/><em>الوحيد</em> الذي<br/>لا يُعاد</h2>
+    <p class="cta-sub-copy">كل يوم تنتظر فيه، يقترب 2030 ويبتعد المستخدمون الذين يحتاجون هذا الحل عن حلك. الفرصة موجودة الآن.</p>
+    <div class="cta-btns">
+      <button class="btn-solid-lg" onclick="window.location.href='/register'">ابدأ كمستخدم مجاناً</button>
+      <button class="btn-gold-lg" onclick="document.getElementById('investForm').scrollIntoView({behavior:'smooth'})">💼 تحدث مع المؤسس</button>
+    </div>
+    <div class="invest-box" id="investForm" style="margin-top:64px">
+      <h3>💰 مهتم بالاستثمار؟</h3>
+      <p>نجولة Seed بـ $500K مقابل 12%. نبحث عن مستثمرين يفهمون مستقبل العمل ويريدون بناء شيء يؤثر في حياة ملايين الناس.</p>
+      <div class="invest-terms">
+        <div class="invest-term"><span class="invest-term-val">$500K</span><span class="invest-term-label">حجم الجولة</span></div>
+        <div class="invest-term"><span class="invest-term-val">12%</span><span class="invest-term-label">حصة Equity</span></div>
+        <div class="invest-term"><span class="invest-term-val">$4.2M</span><span class="invest-term-label">Pre-Money Val</span></div>
+        <div class="invest-term"><span class="invest-term-val">10x</span><span class="invest-term-label">عائد متحفظ × 3 سنوات</span></div>
+      </div>
+      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+        <input type="email" placeholder="بريدك الإلكتروني للتواصل" style="flex:1;min-width:220px;padding:13px 16px;border-radius:10px;border:1px solid rgba(255,184,0,.3);background:rgba(255,184,0,.06);color:var(--text);font-family:var(--font-ar);font-size:.9rem;outline:none"/>
+        <button class="btn-gold-lg" style="padding:13px 28px" onclick="sendInvestorEmail()">أرسل اهتمامك</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo"><span style="color:var(--electric)">CV</span><span style="color:var(--gold)">2030</span></div>
+    <div class="footer-links">
+      <a href="/dashboard">المنصة</a>
+      <a href="/recruiter">للشركات</a>
+      <a href="#investor">المستثمرون</a>
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">اتصل بنا</a>
+    </div>
+    <div class="footer-copy">© 2026 CV 2030. جميع الحقوق محفوظة.</div>
+  </div>
+</footer>
+
+<script src="/static/js/main.js"></script>
+<script>
+// ─── COSMOS CANVAS ───
+const canvas = document.getElementById('cosmos');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], nodes = [], connections = [];
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Stars
+for(let i=0;i<200;i++){
+  stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.2,a:Math.random(),da:(.0005+Math.random()*.001)*(Math.random()<.5?1:-1)});
+}
+// Network nodes
+for(let i=0;i<18;i++){
+  nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
+}
+
+let frame=0;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // Stars
+  stars.forEach(s=>{
+    s.a+=s.da;
+    if(s.a<0||s.a>1)s.da*=-1;
+    ctx.beginPath();
+    ctx.arc(s.x*W,s.y*H,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(200,220,255,${s.a*.5})`;
+    ctx.fill();
+  });
+  // Nodes
+  nodes.forEach(n=>{
+    n.x+=n.vx; n.y+=n.vy;
+    if(n.x<0||n.x>W)n.vx*=-1;
+    if(n.y<0||n.y>H)n.vy*=-1;
+  });
+  // Connections
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<220){
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.strokeStyle=`rgba(0,207,255,${(1-d/220)*.12})`;
+        ctx.lineWidth=1;
+        ctx.stroke();
+      }
+    }
+  }
+  nodes.forEach(n=>{
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,2,0,Math.PI*2);
+    ctx.fillStyle='rgba(0,207,255,.35)';
+    ctx.fill();
+  });
+  frame++;
+  requestAnimationFrame(draw);
+}
+draw();
+
+// ─── NAV ───
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled',scrollY>40);
+});
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('navCta').classList.toggle('open');
+});
+
+// ─── QA ACCORDION ───
+function toggleQA(btn){
+  const item=btn.closest('.qa-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.qa-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+
+
+// ─── INVESTOR EMAIL ───
+function sendInvestorEmail(){
+  const inp=document.querySelector('.invest-box input');
+  const btn=document.querySelector('.invest-box .btn-gold-lg');
+  if(!inp.value||!inp.value.includes('@')){
+    inp.style.borderColor='rgba(255,77,141,.5)';
+    return;
+  }
+  fetch('/api/contact-investor', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:inp.value})
+  }).then(r=>r.json()).then(data=>{
+    btn.textContent='✓ تم الإرسال!';
+    btn.style.background='var(--success)';
+    inp.value='';
+    setTimeout(()=>{btn.textContent='أرسل اهتمامك';btn.style.background='';},3000);
+  }).catch(()=>{
+    btn.textContent='خطأ في الإرسال';
+    setTimeout(()=>{btn.textContent='أرسل اهتمامك';btn.style.background='';},3000);
+  });
+}
+</script>
+</body>
+</html>

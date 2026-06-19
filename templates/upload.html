@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>رفع السيرة الذاتية – CV 2030</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <style>
+    body { background: linear-gradient(160deg,#f8f9ff,#eef1ff); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .upload-card { background:#fff; border-radius:24px; padding:40px; max-width:560px; width:100%; box-shadow:0 12px 48px rgba(13,15,26,.12); }
+    .step-indicator { display:flex; gap:0; margin-bottom:36px; }
+    .step-dot { flex:1; text-align:center; position:relative; }
+    .step-dot::before { content:''; position:absolute; top:14px; left:-50%; right:50%; height:2px; background:#e2e5f0; }
+    .step-dot:first-child::before { display:none; }
+    .step-dot.done::before { background:#4F6EF7; }
+    .dot { width:28px; height:28px; border-radius:50%; background:#e2e5f0; color:#6B6E85; font-size:.75rem; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 6px; position:relative; z-index:1; }
+    .step-dot.active .dot { background:#4F6EF7; color:#fff; }
+    .step-dot.done .dot { background:#10B981; color:#fff; }
+    .step-dot span { font-size:.75rem; font-weight:700; color:#6B6E85; }
+    .step-dot.active span { color:#4F6EF7; }
+    .skills-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .skill-chip { display:flex; align-items:center; gap:6px; background:#f0f3ff; color:#4F6EF7; padding:6px 12px; border-radius:50px; font-size:.82rem; font-weight:700; border:1px solid rgba(79,110,247,.2); }
+    .skill-chip button { background:none; border:none; cursor:pointer; color:#6B6E85; font-size:.9rem; line-height:1; }
+    .skill-input-row { display:flex; gap:8px; margin-top:12px; }
+    .analysis-steps { display:flex; flex-direction:column; gap:14px; }
+    .analysis-step { display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:12px; background:#f5f6fa; opacity:.4; transition:all .5s; }
+    .analysis-step.done { opacity:1; background:#eefbf5; }
+    .analysis-step-icon { font-size:1.3rem; }
+    .analysis-step-text { font-size:.9rem; font-weight:700; }
+    .analysis-step.done .analysis-step-text::after { content:' ✓'; color:#10B981; }
+    .spinner { width:20px; height:20px; border:2px solid #e2e5f0; border-top-color:#4F6EF7; border-radius:50%; animation:spin .7s linear infinite; margin-right:auto; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
+</head>
+<body>
+<div class="upload-card">
+  <div class="step-indicator">
+    <div class="step-dot done" id="stepDot1"><div class="dot">✓</div><span>التسجيل</span></div>
+    <div class="step-dot active" id="stepDot2"><div class="dot">٢</div><span>السيرة الذاتية</span></div>
+    <div class="step-dot" id="stepDot3"><div class="dot">٣</div><span>المهارات</span></div>
+    <div class="step-dot" id="stepDot4"><div class="dot">٤</div><span>التحليل</span></div>
+  </div>
+
+  <!-- STEP 2: Upload -->
+  <div id="pageUpload">
+    <h2 style="margin-bottom:8px">ارفع سيرتك الذاتية 📄</h2>
+    <p style="color:#6B6E85;font-size:.9rem;margin-bottom:28px">ارفع ملف PDF أو Word ونحن نتولى الباقي</p>
+    <div class="upload-area" id="uploadArea">
+      <div class="upload-icon">📎</div>
+      <div class="upload-text">اسحب الملف هنا أو اضغط للاختيار</div>
+      <div class="upload-hint">PDF أو DOCX حتى 10MB</div>
+    </div>
+    <input type="file" id="fileInput" accept=".pdf,.doc,.docx" style="display:none"/>
+    <div style="margin-top:20px;text-align:center">
+      <span style="font-size:.82rem;color:#6B6E85">أو</span>
+      <button onclick="skipToSkills()" style="background:none;border:none;color:#4F6EF7;font-weight:700;cursor:pointer;font-size:.9rem;font-family:Cairo,sans-serif"> أدخل بياناتك يدوياً</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Skills -->
+  <div id="pageSkills" style="display:none">
+    <h2 style="margin-bottom:8px">المهارات الإضافية 🛠️</h2>
+    <p style="color:#6B6E85;font-size:.9rem;margin-bottom:20px">أضف المهارات اليدوية أو الإضافية غير المذكورة في سيرتك الذاتية</p>
+    <div class="form-group">
+      <label class="form-label">مجال عملك الحالي</label>
+      <select class="form-input">
+        <option>اختر المجال...</option>
+        <option>خدمة العملاء</option>
+        <option>الإنتاج والتصنيع</option>
+        <option>المبيعات والتسويق</option>
+        <option>تقنية المعلومات</option>
+        <option>المحاسبة والمالية</option>
+        <option>الهندسة</option>
+        <option>الرعاية الصحية</option>
+        <option>التعليم</option>
+        <option>أخرى</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">المسمى الوظيفي الحالي</label>
+      <input type="text" class="form-input" placeholder="مثال: مشغل خط إنتاج، موظف خدمة عملاء"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">سنوات الخبرة</label>
+      <select class="form-input">
+        <option>اختر...</option>
+        <option>أقل من سنة</option>
+        <option>1-3 سنوات</option>
+        <option>3-5 سنوات</option>
+        <option>5-10 سنوات</option>
+        <option>أكثر من 10 سنوات</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">مهارات إضافية (نجارة، سباكة، قيادة، تسويق...)</label>
+      <div class="skill-input-row">
+        <input type="text" class="form-input" id="skillInput" placeholder="اكتب مهارة واضغط إضافة" style="flex:1"/>
+        <button class="btn-primary" onclick="addSkill()" style="padding:12px 20px;white-space:nowrap">إضافة</button>
+      </div>
+      <div class="skills-chips" id="skillsContainer">
+        <div class="skill-chip">قيادة السيارات <button onclick="removeSkill(this)">×</button></div>
+        <div class="skill-chip">Microsoft Excel <button onclick="removeSkill(this)">×</button></div>
+      </div>
+    </div>
+    <button class="btn-primary form-full" onclick="startAnalysis()">تحليل بياناتي 🚀</button>
+  </div>
+
+  <!-- STEP 4: Analysis -->
+  <div id="pageAnalysis" style="display:none">
+    <h2 style="margin-bottom:8px;text-align:center">جارٍ التحليل 🤖</h2>
+    <p style="color:#6B6E85;font-size:.9rem;margin-bottom:28px;text-align:center">الذكاء الاصطناعي يحلل بياناتك...</p>
+    <div class="analysis-steps">
+      <div class="analysis-step" id="as1"><div class="analysis-step-icon">📄</div><div class="analysis-step-text">قراءة السيرة الذاتية</div><div class="spinner" id="sp1"></div></div>
+      <div class="analysis-step" id="as2"><div class="analysis-step-icon">🔍</div><div class="analysis-step-text">تحليل اتجاهات سوق العمل 2030</div><div class="spinner" id="sp2"></div></div>
+      <div class="analysis-step" id="as3"><div class="analysis-step-icon">🎯</div><div class="analysis-step-text">إيجاد الوظائف البديلة المناسبة</div><div class="spinner" id="sp3"></div></div>
+      <div class="analysis-step" id="as4"><div class="analysis-step-icon">🎓</div><div class="analysis-step-text">اختيار الكورسات المخصصة</div><div class="spinner" id="sp4"></div></div>
+      <div class="analysis-step" id="as5"><div class="analysis-step-icon">📊</div><div class="analysis-step-text">إعداد تقريرك الشامل</div><div class="spinner" id="sp5"></div></div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/main.js"></script>
+<script>
+function skipToSkills() {
+  document.getElementById('pageUpload').style.display='none';
+  document.getElementById('pageSkills').style.display='block';
+  document.getElementById('stepDot2').className='step-dot done';
+  document.getElementById('stepDot3').className='step-dot active';
+}
+function addSkill() {
+  const inp = document.getElementById('skillInput');
+  if (!inp.value.trim()) return;
+  const chip = document.createElement('div');
+  chip.className='skill-chip';
+  chip.innerHTML=`${inp.value.trim()} <button onclick="removeSkill(this)">×</button>`;
+  document.getElementById('skillsContainer').appendChild(chip);
+  inp.value='';
+}
+function removeSkill(btn) { btn.closest('.skill-chip').remove(); }
+document.getElementById('skillInput')?.addEventListener('keypress', e => { if(e.key==='Enter') addSkill(); });
+function startAnalysis() {
+  document.getElementById('pageSkills').style.display='none';
+  document.getElementById('pageAnalysis').style.display='block';
+  document.getElementById('stepDot3').className='step-dot done';
+  document.getElementById('stepDot4').className='step-dot active';
+  [1,2,3,4,5].forEach((n,i)=>{
+    setTimeout(()=>{
+      document.getElementById('as'+n).classList.add('done');
+      document.getElementById('sp'+n).style.display='none';
+    }, (i+1)*1100);
+  });
+  setTimeout(()=>{ window.location.href='/dashboard'; }, 6500);
+}
+// Hook upload to go to skills
+const ua = document.getElementById('uploadArea');
+const fi = document.getElementById('fileInput');
+if(ua&&fi){
+  ua.addEventListener('click',()=>fi.click());
+  fi.addEventListener('change',()=>{
+    if(fi.files[0]){ ua.innerHTML='<div class="upload-icon">✅</div><div class="upload-text">تم رفع '+fi.files[0].name+'</div>'; setTimeout(skipToSkills,800); }
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>فرص العمل – CV 2030</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <style>
+    .job-card-full{background:#fff;border-radius:16px;padding:22px;border:1.5px solid #eef1ff;margin-bottom:14px;display:flex;align-items:flex-start;gap:16px;transition:.25s;cursor:pointer}
+    .job-card-full:hover{border-color:#4F6EF7;box-shadow:0 6px 28px rgba(79,110,247,.1);transform:translateY(-2px)}
+    .jc-logo{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+    .jc-body{flex:1}
+    .jc-title{font-weight:800;font-size:1rem;margin-bottom:4px}
+    .jc-company{font-size:.82rem;color:#6B6E85;margin-bottom:8px}
+    .jc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+    .jc-tag{padding:3px 10px;border-radius:50px;font-size:.72rem;font-weight:700;background:#f5f6fa;color:#6B6E85}
+    .jc-match{font-size:1.1rem;font-weight:900;min-width:50px;text-align:center}
+    .probability-indicator{padding:6px 14px;border-radius:50px;font-size:.78rem;font-weight:800}
+    .pi-high{background:#d1fae5;color:#065f46}
+    .pi-mid{background:#fef3c7;color:#92400e}
+    .pi-low{background:#fef2f2;color:#991b1b}
+    .search-hero{background:linear-gradient(135deg,#0D0F1A,#1a1d3a);padding:48px 32px;border-radius:20px;margin-bottom:28px;color:#fff}
+    .search-input-wrap{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+    .search-input-wrap input{flex:1;padding:14px 18px;border-radius:12px;border:none;font-family:Cairo,sans-serif;font-size:.95rem;min-width:200px}
+    .source-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    .source-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);padding:4px 12px;border-radius:50px;font-size:.75rem;font-weight:700}
+  .tab-btns{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .tab-btn{padding:8px 18px;border-radius:50px;border:1.5px solid #e2e5f0;background:#fff;font-family:Cairo,sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:.2s}
+  .tab-btn.active{background:#4F6EF7;color:#fff;border-color:#4F6EF7}
+  </style>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><span class="logo-mark">CV</span><span style="color:#fff">2030</span></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">الرئيسية</div>
+      <a href="/dashboard" class="sidebar-link"><span class="icon">🏠</span> نظرة عامة</a>
+      <a href="/jobs" class="sidebar-link active"><span class="icon">💼</span> فرص العمل</a>
+      <a href="#" class="sidebar-link"><span class="icon">📊</span> تحليل مستقبلي</a>
+      <div class="sidebar-section">التطوير</div>
+      <a href="#" class="sidebar-link"><span class="icon">🎓</span> الكورسات</a>
+      <a href="#" class="sidebar-link"><span class="icon">📅</span> جدولي التدريبي</a>
+      <a href="#" class="sidebar-link"><span class="icon">🧪</span> الاختبارات</a>
+      <div class="sidebar-section">الحساب</div>
+      <a href="#" class="sidebar-link"><span class="icon">👤</span> ملفي الشخصي</a>
+      <a href="/" class="sidebar-link"><span class="icon">🚪</span> تسجيل الخروج</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="sidebar-user-info">
+        <div class="sidebar-avatar"></div>
+        <div><div class="sidebar-user-name">محمد أحمد</div><div class="sidebar-user-role">مشغل خط إنتاج</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="topbar-title">فرص العمل المناسبة لك</div>
+      <div class="topbar-actions">
+        <div class="notif-btn">🔔<span class="notif-badge">3</span></div>
+      </div>
+    </header>
+    <div class="page-content">
+
+      <div class="search-hero">
+        <h2 style="color:#fff;margin-bottom:8px">🔍 ابحث في كل المنصات دفعة واحدة</h2>
+        <p style="color:rgba(255,255,255,.7);font-size:.9rem">نبحث في LinkedIn, Wuzzuf, Bayt, Indeed وغيرها ونجلب لك الأنسب</p>
+        <div class="search-input-wrap">
+          <input type="text" placeholder="ابحث عن وظيفة أو مهارة..." value="مشرف جودة"/>
+          <input type="text" placeholder="الموقع (القاهرة، دبي...)" value="مصر"/>
+          <button class="btn-primary">بحث</button>
+        </div>
+        <div class="source-tags">
+          <span class="source-tag">💼 LinkedIn</span>
+          <span class="source-tag">🟠 Wuzzuf</span>
+          <span class="source-tag">🟢 Bayt</span>
+          <span class="source-tag">🔵 Indeed</span>
+          <span class="source-tag">⚫ Glassdoor</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+        <button class="tab-btn active">كل الوظائف (24)</button>
+        <button class="tab-btn">ترقيات داخلية (3)</button>
+        <button class="tab-btn">الأعلى توافقاً</button>
+        <button class="tab-btn">الأحدث</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 280px;gap:24px" class="jobs-grid">
+        <div>
+          <div class="job-card-full">
+            <div class="jc-logo" style="background:#fff0e0">🔍</div>
+            <div class="jc-body">
+              <div class="jc-title">مشرف ضبط جودة</div>
+              <div class="jc-company">شركة الإنتاج الحديث · القاهرة · دوام كامل</div>
+              <div class="jc-tags"><span class="jc-tag">ISO 9001</span><span class="jc-tag">Excel</span><span class="jc-tag">إدارة فريق</span><span class="jc-tag" style="background:#eefbf5;color:#059669">Wuzzuf</span></div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span class="probability-indicator pi-high">احتمالية قبولك: ٨٩٪</span>
+                <span style="font-size:.78rem;color:#6B6E85">راتب: 8,000 - 12,000 ج.م</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+              <button class="btn-primary" style="padding:9px 16px;font-size:.82rem">قدّم الآن</button>
+              <button class="btn-ghost" style="padding:7px 14px;font-size:.78rem">حفظ</button>
+            </div>
+          </div>
+
+          <div class="job-card-full">
+            <div class="jc-logo" style="background:#f0faf7">📋</div>
+            <div class="jc-body">
+              <div class="jc-title">مدير وردية إنتاج</div>
+              <div class="jc-company">مصنع الغذاء المتكامل · 6 أكتوبر · دوام كامل</div>
+              <div class="jc-tags"><span class="jc-tag">إدارة فريق</span><span class="jc-tag">جدولة إنتاج</span><span class="jc-tag">مهارات قيادية</span><span class="jc-tag" style="background:#dbeafe;color:#1e40af">LinkedIn</span></div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span class="probability-indicator pi-high">احتمالية قبولك: ٨٢٪</span>
+                <span style="font-size:.78rem;color:#6B6E85">راتب: 10,000 - 15,000 ج.م</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+              <button class="btn-primary" style="padding:9px 16px;font-size:.82rem">قدّم الآن</button>
+              <button class="btn-ghost" style="padding:7px 14px;font-size:.78rem">حفظ</button>
+            </div>
+          </div>
+
+          <div class="job-card-full" style="border-color:#F59E0B;background:#fffbf0">
+            <div style="position:absolute;top:12px;left:12px"><span class="badge badge-warn">ترقية داخلية 🔥</span></div>
+            <div class="jc-logo" style="background:#fff8e7">⭐</div>
+            <div class="jc-body" style="padding-top:8px">
+              <div class="jc-title">مشرف خط إنتاج – شركتك الحالية</div>
+              <div class="jc-company">نفس شركتك · ترقية مباشرة · فرصة داخلية</div>
+              <div class="jc-tags"><span class="jc-tag">خبرتك الحالية</span><span class="jc-tag">5 سنوات+ خبرة</span></div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span class="probability-indicator pi-mid">احتمالية قبولك: ٧١٪</span>
+                <span style="font-size:.78rem;color:#6B6E85">راتب أعلى بـ 35%</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+              <button class="btn-primary" style="padding:9px 16px;font-size:.82rem;background:#F59E0B">قدّم للترقية</button>
+              <button class="btn-ghost" style="padding:7px 14px;font-size:.78rem">تفاصيل</button>
+            </div>
+          </div>
+
+          <div class="job-card-full">
+            <div class="jc-logo" style="background:#f5f0ff">📦</div>
+            <div class="jc-body">
+              <div class="jc-title">مدير مستودع ولوجستيات</div>
+              <div class="jc-company">شركة أمازون مصر · القاهرة · دوام كامل</div>
+              <div class="jc-tags"><span class="jc-tag">SAP</span><span class="jc-tag">إدارة مخزون</span><span class="jc-tag">Excel متقدم</span><span class="jc-tag" style="background:#fef3c7;color:#92400e">Bayt</span></div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span class="probability-indicator pi-mid">احتمالية قبولك: ٦٤٪</span>
+                <span style="font-size:.78rem;color:#6B6E85">يحتاج: SAP + Excel متقدم</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+              <button class="btn-primary" style="padding:9px 16px;font-size:.82rem">رفع نسبتي أولاً</button>
+              <button class="btn-ghost" style="padding:7px 14px;font-size:.78rem">حفظ</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: TIPS -->
+        <div>
+          <div class="panel">
+            <div class="panel-title">💡 كيف ترفع نسبة قبولك؟</div>
+            <div style="font-size:.85rem;line-height:1.8;color:#3A3D52">
+              <p style="margin-bottom:12px">بناءً على الوظائف اللي شفتها، ده اللي تركز عليه:</p>
+              <div style="padding:12px;background:#f0f3ff;border-radius:10px;margin-bottom:10px">
+                <div style="font-weight:700;font-size:.88rem;color:#4F6EF7;margin-bottom:4px">🎯 الأهم الآن</div>
+                <div>إكمال كورس Excel المتقدم يرفع نسبتك في 3 وظائف دفعة واحدة</div>
+              </div>
+              <div style="padding:12px;background:#eefbf5;border-radius:10px;margin-bottom:10px">
+                <div style="font-weight:700;font-size:.88rem;color:#059669;margin-bottom:4px">📋 الشهادات المطلوبة</div>
+                <div>ISO 9001 تفتح لك 8 وظائف إضافية في نتائجك الحالية</div>
+              </div>
+              <div style="padding:12px;background:#fff8e7;border-radius:10px">
+                <div style="font-weight:700;font-size:.88rem;color:#d97706;margin-bottom:4px">⏱️ الوقت المتوقع</div>
+                <div>3-4 شهور للوصول لـ 85%+ في معظم الوظائف</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">📊 إحصائياتك</div>
+            <div class="progress-item"><div class="progress-label"><span>وظائف شاهدتها</span><span>24</span></div><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>طلبات أرسلتها</span><span>3</span></div><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>معدل توافقك</span><span>76%</span></div><div class="progress-bar"><div class="progress-fill" style="width:76%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/static/js/main.js"></script>
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{ document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); });
+});
+</script>
+<style>
+@media(max-width:900px){.jobs-grid{grid-template-columns:1fr!important;}}
+.job-card-full{position:relative;}
+</style>
+</body>
+</html>

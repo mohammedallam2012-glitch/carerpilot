@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تسجيل الدخول – CV 2030</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-logo"><span class="logo-mark">CV</span><span style="color:#0D0F1A">2030</span></div>
+    <h1 class="auth-title">تسجيل الدخول</h1>
+    <p class="auth-sub">مرحباً بعودتك! حسّن مستقبلك المهني</p>
+
+    <form method="POST" action="/api/login" onsubmit="return handleLogin(event)">
+      <div class="social-btns">
+        <button type="button" class="social-btn">🔵 Google</button>
+        <button type="button" class="social-btn">📘 Facebook</button>
+        <button type="button" class="social-btn">💼 LinkedIn</button>
+      </div>
+      <div class="divider">أو بالبريد الإلكتروني</div>
+
+      <div class="form-group">
+        <label class="form-label">البريد الإلكتروني</label>
+        <input type="email" name="email" class="form-input" placeholder="example@email.com" dir="ltr" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">كلمة المرور</label>
+        <input type="password" name="password" class="form-input" placeholder="أدخل كلمة المرور" required/>
+      </div>
+
+      <button type="submit" class="btn-primary form-full">تسجيل الدخول</button>
+    </form>
+    <p class="auth-switch">ما عندك حساب؟ <a href="/register">أنشئ حساب جديد</a></p>
+  </div>
+</div>
+<script src="/static/js/main.js"></script>
+<script>
+function handleLogin(e){
+  e.preventDefault();
+  var email = e.target.email.value;
+  var pass = e.target.password.value;
+  if(email && pass){
+    showToast('تم تسجيل الدخول بنجاح! جارٍ التحويل...', 'success');
+    setTimeout(function(){ window.location.href='/dashboard'; }, 800);
+  }
+  return false;
+}
+</script>
+</body>
+</html>

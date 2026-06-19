@@ -1,0 +1,13 @@
+{
+  "build_command": "pip install -r requirements.txt",
+  "output_directory": ".",
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.12"
+    }
+  },
+  "rewrites": [
+    { "source": "/static/(.*)", "destination": "/static/$1" },
+    { "source": "/(.*)", "destination": "/api/index.py" }
+  ]
+}

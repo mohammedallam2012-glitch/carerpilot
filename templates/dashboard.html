@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لوحة التحكم – CV 2030</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <style>
+    .survival-ring { position:relative; width:160px; height:160px; margin:0 auto 20px; }
+    .ring-svg2 { width:100%; height:100%; transform:rotate(-90deg); }
+    .ring2-bg { fill:none; stroke:#eef1ff; stroke-width:12; }
+    .ring2-fill { fill:none; stroke-width:12; stroke-linecap:round; stroke-dasharray:440; stroke-dashoffset:440; transition:stroke-dashoffset 2s ease; }
+    .ring2-label { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .ring2-pct { font-size:2.2rem; font-weight:900; font-family:'Space Grotesk',sans-serif; }
+    .ring2-sub { font-size:.75rem; font-weight:700; color:#6B6E85; }
+    .course-item { display:flex; align-items:flex-start; gap:14px; padding:14px; border-radius:12px; background:#f5f6fa; margin-bottom:10px; }
+    .course-thumb { width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
+    .course-title { font-weight:700; font-size:.9rem; margin-bottom:4px; }
+    .course-meta { font-size:.78rem; color:#6B6E85; }
+    .course-link { font-size:.78rem; color:#4F6EF7; font-weight:700; }
+    .alt-job-card { background:#f5f6fa; border-radius:14px; padding:18px; margin-bottom:10px; display:flex; align-items:center; gap:14px; border:1.5px solid transparent; transition:.25s; cursor:pointer; }
+    .alt-job-card:hover { border-color:#4F6EF7; background:#f0f3ff; }
+    .aj-icon { font-size:1.8rem; }
+    .aj-info { flex:1; }
+    .aj-title { font-weight:700; font-size:.95rem; margin-bottom:4px; }
+    .aj-meta { font-size:.8rem; color:#6B6E85; }
+    .aj-score { font-size:1rem; font-weight:900; color:#10B981; }
+    .timeline-item { display:flex; gap:16px; margin-bottom:20px; }
+    .timeline-dot { width:12px; height:12px; border-radius:50%; background:#4F6EF7; margin-top:5px; flex-shrink:0; position:relative; }
+    .timeline-dot::after { content:''; position:absolute; top:12px; left:5px; width:2px; height:calc(100% + 14px); background:#e2e5f0; }
+    .timeline-item:last-child .timeline-dot::after { display:none; }
+    .timeline-content { flex:1; }
+    .timeline-week { font-size:.75rem; font-weight:700; color:#4F6EF7; margin-bottom:4px; }
+    .timeline-task { font-weight:700; font-size:.9rem; }
+    .timeline-detail { font-size:.82rem; color:#6B6E85; }
+    .tab-btns { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+    .tab-btn { padding:8px 18px; border-radius:50px; border:1.5px solid #e2e5f0; background:#fff; font-family:Cairo,sans-serif; font-weight:700; font-size:.85rem; cursor:pointer; transition:.2s; }
+    .tab-btn.active { background:#4F6EF7; color:#fff; border-color:#4F6EF7; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+    .apply-check { background:linear-gradient(135deg,#4F6EF7,#7c3aed); border-radius:16px; padding:24px; color:#fff; }
+    .apply-title { font-weight:700; font-size:1rem; margin-bottom:8px; }
+    .apply-sub { font-size:.85rem; opacity:.8; margin-bottom:16px; }
+    .prob-meter { background:rgba(255,255,255,.15); border-radius:50px; height:10px; overflow:hidden; }
+    .prob-fill { height:100%; background:#fff; border-radius:50px; transition:width 1.5s ease; }
+  </style>
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo"><span class="logo-mark">CV</span><span style="color:#fff">2030</span></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">الرئيسية</div>
+      <a href="/dashboard" class="sidebar-link active"><span class="icon">🏠</span> نظرة عامة</a>
+      <a href="/jobs" class="sidebar-link"><span class="icon">💼</span> فرص العمل</a>
+      <a href="#" class="sidebar-link"><span class="icon">📊</span> تحليل مستقبلي</a>
+
+      <div class="sidebar-section">التطوير</div>
+      <a href="#" class="sidebar-link"><span class="icon">🎓</span> الكورسات</a>
+      <a href="#" class="sidebar-link"><span class="icon">📅</span> جدولي التدريبي</a>
+      <a href="#" class="sidebar-link"><span class="icon">🧪</span> الاختبارات</a>
+
+      <div class="sidebar-section">الحساب</div>
+      <a href="#" class="sidebar-link"><span class="icon">👤</span> ملفي الشخصي</a>
+      <a href="#" class="sidebar-link"><span class="icon">⚙️</span> الإعدادات</a>
+      <a href="/" class="sidebar-link"><span class="icon">🚪</span> تسجيل الخروج</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="sidebar-user-info">
+        <div class="sidebar-avatar"></div>
+        <div>
+          <div class="sidebar-user-name">محمد أحمد</div>
+          <div class="sidebar-user-role">مشغل خط إنتاج</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button id="sidebarToggle" style="background:none;border:none;font-size:1.3rem;cursor:pointer;display:none">☰</button>
+        <div class="topbar-title">مرحباً، محمد 👋</div>
+      </div>
+      <div class="topbar-actions">
+        <div class="notif-btn">🔔 <span class="notif-badge">3</span></div>
+        <a href="/upload" class="btn-primary" style="padding:9px 18px;font-size:.85rem">تحديث CV</a>
+      </div>
+    </header>
+
+    <div class="page-content">
+
+      <!-- MAIN GRID -->
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start;flex-wrap:wrap" class="dash-main-grid">
+
+        <!-- LEFT -->
+        <div>
+          <!-- SURVIVAL SCORE -->
+          <div class="panel" style="text-align:center">
+            <div class="panel-title" style="justify-content:center">احتمالية بقاء وظيفتك حتى 2030</div>
+            <div class="survival-ring">
+              <svg viewBox="0 0 160 160" class="ring-svg2">
+                <defs>
+                  <linearGradient id="rg2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#F59E0B"/>
+                    <stop offset="100%" stop-color="#EF4444"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" class="ring2-bg"/>
+                <circle cx="80" cy="80" r="70" class="ring2-fill" id="survRing" stroke="url(#rg2)"/>
+              </svg>
+              <div class="ring2-label">
+                <span class="ring2-pct" id="survPct" style="color:#F59E0B">0%</span>
+                <span class="ring2-sub">احتمالية البقاء</span>
+              </div>
+            </div>
+            <div style="background:#fff8e7;border:1px solid #fcd34d;border-radius:12px;padding:14px 20px;display:inline-flex;align-items:center;gap:10px;font-size:.9rem;font-weight:700;color:#d97706">
+              ⚠️ خطر متوسط — وظيفتك قد تتأثر بالأتمتة
+            </div>
+          </div>
+
+          <!-- ALT JOBS -->
+          <div class="panel">
+            <div class="panel-title">الوظائف البديلة المقترحة <a href="/jobs">عرض الكل</a></div>
+            <div class="alt-job-card" onclick="openApplyCheck('مشرف جودة','89')">
+              <div class="aj-icon">🔍</div>
+              <div class="aj-info"><div class="aj-title">مشرف جودة</div><div class="aj-meta">نفس قطاعك · راتب أعلى بـ 40%</div></div>
+              <div class="aj-score">89%</div>
+            </div>
+            <div class="alt-job-card" onclick="openApplyCheck('مدير وردية','82')">
+              <div class="aj-icon">📋</div>
+              <div class="aj-info"><div class="aj-title">مدير وردية</div><div class="aj-meta">فرصة ترقية داخلية · 3 شهور</div></div>
+              <div class="aj-score">82%</div>
+            </div>
+            <div class="alt-job-card" onclick="openApplyCheck('مدير مستودع','76')">
+              <div class="aj-icon">📦</div>
+              <div class="aj-info"><div class="aj-title">مدير مستودع</div><div class="aj-meta">يتطلب Excel متقدم · 6 شهور</div></div>
+              <div class="aj-score">76%</div>
+            </div>
+            <div class="alt-job-card" onclick="openApplyCheck('مسؤول سلامة وصحة مهنية','71')">
+              <div class="aj-icon">🦺</div>
+              <div class="aj-info"><div class="aj-title">مسؤول سلامة مهنية</div><div class="aj-meta">مستقبل قوي · شهادة NEBOSH</div></div>
+              <div class="aj-score">71%</div>
+            </div>
+          </div>
+
+          <!-- APPLY CHECK MODAL (hidden) -->
+          <div id="applyModal" style="display:none" class="panel apply-check">
+            <div class="apply-title">📊 تقييم طلبك لوظيفة: <span id="modalJobName"></span></div>
+            <div class="apply-sub">بناءً على سيرتك الذاتية الحالية، احتمالية قبولك:</div>
+            <div style="font-size:2rem;font-weight:900;margin-bottom:12px" id="modalPct">0%</div>
+            <div class="prob-meter" style="margin-bottom:16px"><div class="prob-fill" id="modalBar" style="width:0%"></div></div>
+            <div style="font-size:.85rem;opacity:.9;margin-bottom:16px">لرفع نسبتك تحتاج: <strong>دورة Excel متقدم + شهادة جودة ISO</strong></div>
+            <div style="display:flex;gap:10px">
+              <button class="btn-primary" style="background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5)" onclick="closeModal()">إغلاق</button>
+              <a href="/jobs" class="btn-primary" style="background:#fff;color:#4F6EF7">عرض الكورسات</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div>
+          <!-- QUICK STATS -->
+          <div class="dashboard-grid" style="grid-template-columns:1fr 1fr;margin-bottom:24px">
+            <div class="dash-card"><div class="dash-card-label">نقاط القبول</div><div class="dash-card-value" style="color:#4F6EF7">724</div><div class="dash-card-sub">↑ +12 هذا الأسبوع</div></div>
+            <div class="dash-card"><div class="dash-card-label">كورسات منجزة</div><div class="dash-card-value">3</div><div class="dash-card-sub">من 8 مقررة</div></div>
+          </div>
+
+          <!-- TRAINING PLAN -->
+          <div class="panel">
+            <div class="panel-title">خطة التدريب 📅</div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#10B981"></div>
+              <div class="timeline-content">
+                <div class="timeline-week">الأسبوع 1-2 ✓</div>
+                <div class="timeline-task">Excel الأساسيات</div>
+                <div class="timeline-detail">Udemy · 8 ساعات · مكتمل</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#10B981"></div>
+              <div class="timeline-content">
+                <div class="timeline-week">الأسبوع 3-4 ✓</div>
+                <div class="timeline-task">مبادئ إدارة الإنتاج</div>
+                <div class="timeline-detail">Coursera · 6 ساعات · مكتمل</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-week">الأسبوع 5-7 ← الآن</div>
+                <div class="timeline-task">Excel المتقدم + Pivot</div>
+                <div class="timeline-detail">Coursera · 12 ساعة · 30% مكتمل</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#e2e5f0"></div>
+              <div class="timeline-content">
+                <div class="timeline-week">الأسبوع 8-12</div>
+                <div class="timeline-task">شهادة ISO 9001 (جودة)</div>
+                <div class="timeline-detail">Alison · 20 ساعة</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOP COURSES -->
+          <div class="panel">
+            <div class="panel-title">كورسات مقترحة 🎓 <a href="#">عرض الكل</a></div>
+            <div class="course-item">
+              <div class="course-thumb" style="background:#fff0e0">📊</div>
+              <div>
+                <div class="course-title">Excel للمبتدئين والمتقدمين</div>
+                <div class="course-meta">Udemy · مجاني ← مدفوع · 4.8 ⭐</div>
+                <a class="course-link" href="#">ابدأ الكورس ←</a>
+              </div>
+            </div>
+            <div class="course-item">
+              <div class="course-thumb" style="background:#e8fff4">🔍</div>
+              <div>
+                <div class="course-title">مراقبة الجودة ISO 9001</div>
+                <div class="course-meta">Alison · مجاني بالكامل · 4.7 ⭐</div>
+                <a class="course-link" href="#">ابدأ الكورس ←</a>
+              </div>
+            </div>
+            <div class="course-item">
+              <div class="course-thumb" style="background:#f0f0ff">📋</div>
+              <div>
+                <div class="course-title">مهارات قيادة الفرق</div>
+                <div class="course-meta">Coursera · شهادة معتمدة · 4.9 ⭐</div>
+                <a class="course-link" href="#">ابدأ الكورس ←</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/static/js/main.js"></script>
+<script>
+// Survival ring
+const survRing = document.getElementById('survRing');
+const survPct = document.getElementById('survPct');
+if(survRing){
+  const circ=440, val=42;
+  setTimeout(()=>{
+    survRing.style.strokeDashoffset = circ - (val/100)*circ;
+    let c=0; const t=setInterval(()=>{ c=Math.min(c+1,val); survPct.textContent=c+'%'; if(c>=val)clearInterval(t); },30);
+  },400);
+}
+
+function openApplyCheck(name, pct){
+  document.getElementById('applyModal').style.display='block';
+  document.getElementById('modalJobName').textContent=name;
+  let c=0;
+  const t=setInterval(()=>{ c=Math.min(c+1,parseInt(pct)); document.getElementById('modalPct').textContent=c+'%'; document.getElementById('modalBar').style.width=c+'%'; if(c>=parseInt(pct))clearInterval(t); },20);
+  document.getElementById('applyModal').scrollIntoView({behavior:'smooth'});
+}
+function closeModal(){ document.getElementById('applyModal').style.display='none'; }
+
+// Responsive sidebar - remove inline display override
+</script>
+<style>
+@media(max-width:900px){
+  .dash-main-grid{grid-template-columns:1fr!important;}
+}
+</style>
+</body>
+</html>

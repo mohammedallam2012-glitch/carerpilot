@@ -1,0 +1,212 @@
+/* CV 2030 — Shared Styles */
+
+/* ─── RESET & BASE ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{direction:rtl;scroll-behavior:smooth}
+body{
+  font-family:'Cairo',sans-serif;
+  background:#f8f9ff;
+  color:#3A3D52;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ─── LOCOMOTIVE SCROLL ─── */
+html.has-scroll-smooth{overflow:hidden}
+.has-scroll-smooth body{overflow:hidden}
+
+/* ─── AUTH PAGES ─── */
+.auth-page{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,#f8f9ff,#eef1ff);padding:24px;
+}
+.auth-card{
+  background:#fff;border-radius:24px;padding:40px;
+  max-width:460px;width:100%;box-shadow:0 12px 48px rgba(13,15,26,.1);
+}
+.auth-logo{
+  font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;
+  text-align:center;margin-bottom:28px;
+}
+.logo-mark{color:#4F6EF7}
+.auth-title{font-size:1.4rem;font-weight:900;text-align:center;margin-bottom:6px}
+.auth-sub{font-size:.9rem;color:#6B6E85;text-align:center;margin-bottom:28px}
+.social-btns{display:flex;gap:10px;margin-bottom:16px}
+.social-btn{
+  flex:1;padding:11px;border:1.5px solid #e2e5f0;border-radius:12px;
+  background:#fff;cursor:pointer;font-family:Cairo,sans-serif;
+  font-size:.85rem;font-weight:700;transition:.2s;
+}
+.social-btn:hover{background:#f0f3ff;border-color:#4F6EF7}
+.divider{
+  text-align:center;font-size:.78rem;color:#6B6E85;margin:16px 0;
+  display:flex;align-items:center;gap:12px;
+}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#e2e5f0}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:.85rem;font-weight:700;margin-bottom:6px;color:#6B6E85}
+.form-input{
+  width:100%;padding:12px 14px;border:1.5px solid #e2e5f0;
+  border-radius:10px;font-family:Cairo,sans-serif;font-size:.9rem;
+  color:#3A3D52;background:#f5f6fa;transition:.2s;outline:none;
+}
+.form-input:focus{border-color:#4F6EF7;background:#fff}
+.form-full{width:100%;margin-top:8px}
+.auth-switch{text-align:center;font-size:.85rem;color:#6B6E85;margin-top:20px}
+.auth-switch a{color:#4F6EF7;font-weight:700}
+
+/* ─── BUTTONS ─── */
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 28px;background:#4F6EF7;color:#fff;border:none;
+  border-radius:12px;font-family:Cairo,sans-serif;font-size:.9rem;
+  font-weight:700;cursor:pointer;transition:.2s;
+}
+.btn-primary:hover{background:#3b5cdb;transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 28px;background:transparent;color:#4F6EF7;border:1.5px solid #e2e5f0;
+  border-radius:12px;font-family:Cairo,sans-serif;font-size:.9rem;
+  font-weight:700;cursor:pointer;transition:.2s;
+}
+.btn-ghost:hover{background:#f0f3ff;border-color:#4F6EF7}
+.btn-sm{
+  padding:7px 14px;border-radius:8px;background:#4F6EF7;color:#fff;
+  border:none;font-family:Cairo,sans-serif;font-size:.78rem;
+  font-weight:700;cursor:pointer;white-space:nowrap;
+}
+
+/* ─── DASHBOARD LAYOUT ─── */
+.dashboard-layout{display:flex;min-height:100vh}
+.sidebar{
+  width:250px;background:#0D0F1A;padding:24px 0;
+  display:flex;flex-direction:column;position:fixed;top:0;right:0;bottom:0;z-index:100;
+  overflow-y:auto;
+}
+.sidebar-logo{
+  font-family:'Space Grotesk',sans-serif;font-size:1.3rem;
+  font-weight:700;padding:0 24px 24px;margin-bottom:8px;
+}
+.sidebar-nav{flex:1;padding:0 12px}
+.sidebar-section{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:#6B6E85;padding:20px 12px 8px;
+}
+.sidebar-link{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-radius:10px;font-size:.88rem;font-weight:600;
+  color:#8B8FA3;transition:.2s;margin-bottom:2px;
+}
+.sidebar-link:hover{background:rgba(255,255,255,.06);color:#fff}
+.sidebar-link.active{background:rgba(79,110,247,.15);color:#4F6EF7}
+.sidebar-link .icon{font-size:1rem}
+.sidebar-user{
+  padding:16px 12px;border-top:1px solid rgba(255,255,255,.06);margin-top:auto;
+}
+.sidebar-user-info{display:flex;align-items:center;gap:10px}
+.sidebar-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,#4F6EF7,#00D4A4);flex-shrink:0;
+}
+.sidebar-user-name{font-size:.85rem;font-weight:700;color:#fff}
+.sidebar-user-role{font-size:.72rem;color:#6B6E85}
+.main-content{
+  flex:1;margin-right:250px;margin-top:0;
+  display:flex;flex-direction:column;min-height:100vh;
+}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 32px;background:#fff;border-bottom:1px solid #eef1ff;
+  position:sticky;top:0;z-index:50;
+}
+.topbar-title{font-size:1.1rem;font-weight:800;color:#0D0F1A}
+.topbar-actions{display:flex;align-items:center;gap:14px}
+.notif-btn{position:relative;font-size:1.2rem;cursor:pointer}
+.notif-badge{
+  position:absolute;top:-4px;right:-4px;
+  background:#EF4444;color:#fff;font-size:.6rem;font-weight:800;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.page-content{padding:28px 32px;flex:1}
+
+/* ─── PANELS ─── */
+.panel{
+  background:#fff;border-radius:16px;padding:24px;
+  border:1px solid #eef1ff;margin-bottom:24px;
+}
+.panel-title{
+  display:flex;align-items:center;justify-content:space-between;
+  font-weight:800;font-size:.95rem;margin-bottom:18px;
+}
+.panel-title a{font-size:.82rem;font-weight:700;color:#4F6EF7}
+
+/* ─── DASHBOARD CARDS ─── */
+.dashboard-grid{display:grid;gap:16px}
+.dash-card{
+  background:#fff;border-radius:14px;padding:20px;
+  border:1px solid #eef1ff;text-align:center;
+}
+.dash-card-label{font-size:.78rem;color:#6B6E85;font-weight:600}
+.dash-card-value{font-size:1.8rem;font-weight:900;color:#0D0F1A;margin:6px 0}
+.dash-card-sub{font-size:.72rem;color:#6B6E85}
+
+/* ─── BADGES ─── */
+.badge{
+  display:inline-flex;align-items:center;padding:4px 10px;border-radius:50px;
+  font-size:.72rem;font-weight:800;
+}
+.badge-success{background:#d1fae5;color:#065f46}
+.badge-warn{background:#fef3c7;color:#92400e}
+.badge-info{background:#dbeafe;color:#1e40af}
+
+/* ─── PROGRESS BARS ─── */
+.progress-item{margin-bottom:14px}
+.progress-label{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:5px}
+.progress-bar{height:6px;background:#eef1ff;border-radius:50px;overflow:hidden}
+.progress-fill{height:100%;background:#4F6EF7;border-radius:50px}
+
+/* ─── DATA TABLES ─── */
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{
+  text-align:right;padding:12px 10px;font-size:.78rem;
+  font-weight:700;color:#6B6E85;border-bottom:2px solid #eef1ff;
+}
+.data-table td{padding:12px 10px;font-size:.85rem;border-bottom:1px solid #f5f6fa}
+
+/* ─── ADMIN STATS ─── */
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
+.admin-stat{
+  background:#fff;border-radius:14px;padding:20px;
+  border:1px solid #eef1ff;text-align:center;
+}
+.admin-stat-num{font-size:1.8rem;font-weight:900;font-family:'Space Grotesk',sans-serif;color:#4F6EF7}
+.admin-stat-label{font-size:.75rem;color:#6B6E85;font-weight:600;margin-top:4px}
+
+/* ─── UPLOAD AREA ─── */
+.upload-area{
+  border:2px dashed #e2e5f0;border-radius:16px;padding:48px 24px;
+  text-align:center;cursor:pointer;transition:.2s;
+}
+.upload-area:hover{border-color:#4F6EF7;background:#f0f3ff}
+.upload-icon{font-size:2.5rem;margin-bottom:12px}
+.upload-text{font-weight:700;font-size:.95rem;margin-bottom:6px}
+.upload-hint{font-size:.78rem;color:#6B6E85}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeInUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* ─── RESPONSIVE ─── */
+@media(min-width:901px){
+  #sidebarToggle{display:none!important}
+}
+@media(max-width:900px){
+  .sidebar{width:220px;transform:translateX(220px);transition:.3s;right:0;left:auto}
+  .sidebar.open{transform:translateX(0)}
+  .main-content{margin-right:0}
+  .page-content{padding:20px 16px}
+  .topbar{padding:14px 16px}
+  #sidebarToggle{display:block!important}
+}
